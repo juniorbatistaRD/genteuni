@@ -1,0 +1,18 @@
+.file {
+  padding: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  margin: 10px;
+}

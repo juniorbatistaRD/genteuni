@@ -1,0 +1,13 @@
+{
+  "appId": "OUr4laQTLAlCcXBV8uJcEDilfeK42siE5FKEuSC5",
+  "javascriptKey": "sFgerkhqDaXERMxKLI7k7ccD4dZBkH78yo8gd4n3",
+  "clientKey": "pRGQH4vVsCemcn72CPIFTiD2soNq5N0YnVocWqyW",
+  "masterKey": "58LuHOuJ4tz5dfobXdVJehxBHj1SLXqV31VZvDsn",
+  "databaseURI": "mongodb://Admin:eltipo2014@ds049337.mlab.com:49337/gente_uni",
+  "cloud": "./cloud/main.js",
+  "startLiveQueryServer": true,
+  "liveQuery": {
+    "classNames": ["Notification", "ProfileComment"]
+  },
+  "liveQueryServerOptions": {}
+}

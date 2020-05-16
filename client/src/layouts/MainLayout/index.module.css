@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f2f5;
+  min-height: calc(100vh - 60px);
+}
+
+.main-container {
+  display: flex;
+  min-height: calc(100vh - 60px);
+}
+
+.sidebar {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background: #fff;
+  height: calc(100vh - 60px);
+  width: 100%;
+  box-shadow: 2px 0 5px 1px #a9a6a64d;
+  position: sticky;
+  top: 60px;
+}
+
+/* Side Bar Menu for desktop*/
+
+.sidebar ul {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  justify-content: space-between;
+}
+
+.content {
+  flex: 3;
+  min-height: calc(100vh - 60px);
+}
+
+.right-side-bar {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main-container {
+    flex-direction: column;
+  }
+
+  .right-side-bar {
+    display: none;
+  }
+}

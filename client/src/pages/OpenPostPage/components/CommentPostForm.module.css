@@ -1,0 +1,8 @@
+.form {
+  display: flex;
+  align-items: flex-end;
+}
+
+.textarea {
+  width: 100%;
+}

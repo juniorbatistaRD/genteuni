@@ -1,0 +1,25 @@
+.fileInput {
+  display: none;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.button {
+  border: solid #4173b2 1px;
+  color: #4173b2;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 7px;
+}
+
+.button:hover {
+  border: solid 1px #4173b2;
+  color: #ffffff;
+  box-shadow: 0px 0px 7px 4px #20202052;
+  background: rgb(0, 32, 73);
+  cursor: pointer;
+}

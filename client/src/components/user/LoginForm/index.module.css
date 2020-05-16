@@ -1,0 +1,65 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width:60%;
+    margin: auto;
+}
+
+.form input{
+    background-color: #f4f4f4
+    ;
+    margin: 10px 0px;
+    padding: 15px;
+
+}
+
+.text{
+    font-size: 12px;
+}
+
+.btns_container{
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .facebook_logo{
+    width:20px;
+} */
+
+.form_error_message{
+    color:red;
+    font-size: 12px;
+}
+
+.facebook_button{
+    flex:3;
+    margin-right:5px;
+}
+
+
+.submit_button{
+    flex:2
+}
+
+
+
+/* ##Device = Most of the Smartphones Mobiles (Portrait) and Low Resolution tablets
+  ##Screen = B/w 320px to 767px
+*/ 
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .form{
+        width:90%;
+    }
+    
+}

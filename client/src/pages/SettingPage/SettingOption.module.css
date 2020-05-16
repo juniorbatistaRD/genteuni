@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #e8e8e8;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
+  margin-right: 20px;
+  fill: #4173b2;
+}
+
+.texts {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: #002049;
+  font-size: 18px;
+}
+
+.description {
+  color: #a8a8a8;
+  font-size: 13px;
+}
+
+.arrow-icon {
+  width: 24px;
+}
+
+.icon-container {
+  flex: 1;
+  display: flex;
+}
+
+.arrow-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}

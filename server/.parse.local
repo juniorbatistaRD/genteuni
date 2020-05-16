@@ -1,0 +1,11 @@
+{
+  "applications": {
+    "Gente Uni": {
+      "applicationId": "OUr4laQTLAlCcXBV8uJcEDilfeK42siE5FKEuSC5"
+    }
+    ,
+    "_default": {
+      "link": "Gente Uni"
+    }
+  }
+}
