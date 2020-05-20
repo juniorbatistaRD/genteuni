@@ -1,0 +1,19 @@
+.borderLines input {
+  display: none;
+}
+
+.borderLines {
+  transition: all 0.1s ease-in-out;
+  background-color: #fff;
+  box-shadow: -2px 4px 7px 0px #c8c8c8;
+}
+
+.borderLinesSelected {
+  /* transform: scale(1.05); */
+  outline: 3px solid #1c2f48;
+  box-shadow: -5px 5px 0px 1px #6495ed;
+}
+
+.borderSelected label input:checked {
+  background-color: black;
+}

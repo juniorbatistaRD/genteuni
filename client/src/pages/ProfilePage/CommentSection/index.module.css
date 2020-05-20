@@ -1,0 +1,13 @@
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.nothingFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: auto;
+}

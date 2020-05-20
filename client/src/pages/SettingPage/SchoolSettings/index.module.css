@@ -1,0 +1,41 @@
+.title {
+  margin: 20px 5px;
+}
+
+.form {
+  margin: 10px;
+  display: flex;
+  align-items: baseline;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.noResults {
+  margin-top: 150px;
+}
+
+.infiniteScroller {
+  width: 100%;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.addSchoolCallToAction {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.initialBox {
+  display: flex;
+  flex-direction: column;
+}

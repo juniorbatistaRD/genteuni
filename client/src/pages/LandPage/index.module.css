@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+/* Device = Most of the Smartphones Mobiles (Portrait) and Low Resolution tablets
+  Screen = B/w 320px to 767px
+*/ 
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+
+  
+}

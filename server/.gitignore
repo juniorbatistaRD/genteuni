@@ -1,0 +1,7 @@
+/node_modules
+/logs
+
+parse-dashboard-config.json
+parse-server-config.json
+
+.parse.local

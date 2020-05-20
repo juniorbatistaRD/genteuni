@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 15px 0px;
+  border-bottom: 1px solid #c6c6c6;
+  margin-bottom: 15px;
+}
+
+.info {
+  margin-left: 20px;
+  flex: 2;
+}
+
+.addButton {
+  margin-right: 20px;
+}

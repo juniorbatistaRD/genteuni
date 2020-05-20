@@ -1,0 +1,23 @@
+.swal-overlay {
+    background-color: rgba(65, 115, 178, 0.45);
+  }
+
+.swal-button {
+  padding: 10px 19px;
+  border-radius: 7px;
+  font-size: 12px;
+  background-color: #4173B2;
+
+}
+  .swal-button--confirm {
+    background-color: #4173B2;
+    border: solid #ffffff 1px;
+    color: #ffffff;
+  }
+
+  .swal-button:hover {
+    background-color: #4173B2;
+
+  }
+
+

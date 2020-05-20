@@ -1,0 +1,52 @@
+
+.container{
+    display: flex;
+    flex:4;
+    flex-direction: column;
+
+}
+
+.title{
+    font-size:33px;
+    margin: 100px 0px 80px 0px;
+    text-align: center;
+    color:#4173B2;
+    font-weight: 400;
+}
+
+.call_to_action{
+    margin:auto;
+}
+
+.hello{
+    width: 400px;
+    z-index: -1;
+    position: absolute;
+    bottom: 0px;
+    align-self: flex-end;
+}
+
+
+/* media querys */
+
+/* ##Device = Most of the Smartphones Mobiles (Portrait) and Low Resolution tablets
+  ##Screen = B/w 320px to 767px
+*/ 
+
+@media (min-width: 320px) and (max-width: 767px) {
+    
+
+    .title{
+        font-size:33px;
+        margin: 20px 0px 20px 0px; 
+    }
+
+    .hello{
+        display: none;
+    }
+    
+    
+}
+
+
+

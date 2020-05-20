@@ -1,0 +1,5 @@
+.avatar {
+  display: flex;
+  border-radius: 100%;
+  object-fit: cover;
+}

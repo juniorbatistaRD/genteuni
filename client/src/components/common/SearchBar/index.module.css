@@ -1,0 +1,20 @@
+.form{
+    display: flex;
+}
+
+.input{
+    border-radius: 7px 0px 0px 7px;
+    background-color: #fff;
+}
+
+.button img{
+    width:15px;
+    margin-right: 5px;
+}
+
+.button{
+    background-color: #fff;
+    border: none;
+    border-radius: 0px 7px 7px 0px;
+    padding: 5px;
+}
