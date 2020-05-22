@@ -13,6 +13,14 @@ function reducer(state, action) {
     case "FETCH_NEXT_PAGE":
       return { ...state, startFrom: state.startFrom + action.payload.perPage };
 
+    case "RELOAD_DATA_SUCCESS":
+      return {
+        ...state,
+        items: [...action.payload.items],
+        count: action.payload.count,
+        isLoading: false,
+      };
+
     default:
       break;
   }
@@ -25,15 +33,16 @@ const initialState = {
   items: [],
 };
 
-function useInfiniteScrolling({ query, perPage, user }) {
+function useInfiniteScrolling({ query, perPage, user, queryData }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const getData = async () => {
+    const fetchData = async () => {
       const data = await query({
         startFrom: state.startFrom,
         perPage,
         user,
+        queryData,
       });
 
       dispatch({
@@ -41,12 +50,25 @@ function useInfiniteScrolling({ query, perPage, user }) {
         payload: { items: data.results, count: data.count },
       });
     };
-
-    getData();
-  }, [perPage, query, state.startFrom, user]);
+    fetchData();
+  }, [perPage, query, state.startFrom, user, queryData]);
 
   const nextPage = () => {
     dispatch({ type: "FETCH_NEXT_PAGE", payload: { perPage: perPage } });
+  };
+
+  const reloadData = async () => {
+    const data = await query({
+      startFrom: 0,
+      perPage,
+      user,
+      queryData,
+    });
+
+    dispatch({
+      type: "RELOAD_DATA_SUCCESS",
+      payload: { items: data.results, count: data.count },
+    });
   };
 
   return {
@@ -55,6 +77,7 @@ function useInfiniteScrolling({ query, perPage, user }) {
     items: state.items,
     isLoading: state.isLoading,
     nextPage,
+    reloadData,
   };
 }
 

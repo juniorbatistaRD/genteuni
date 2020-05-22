@@ -41,10 +41,8 @@ const FollowersPage = ({ user }) => {
 
       {count < 1 && !isLoading && (
         <FlexColumn margin="auto" alignItems="center">
-          <Title
-            text="Este usuario aun no sigue a nadie. El llanero solitario."
-            fontSize="16px"
-          />
+          <Title text="Nadie sigue este usuario. Que sad! 😥" fontSize="16px" />
+
           <EmptyIlustration width="200px" height="200px" />
         </FlexColumn>
       )}

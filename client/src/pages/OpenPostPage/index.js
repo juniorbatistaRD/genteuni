@@ -11,8 +11,12 @@ import styles from "./index.module.css";
 import Moment from "react-moment";
 import "moment/locale/es";
 import ShareButtons from "../../components/common/ShareButtons";
-import Button from "../../components/common/Button";
 import CommentSectionPost from "./CommentSectionPost";
+import Spinner from "../../components/common/Spinner";
+import ViewsPost from "./components/ViewsPost";
+import LikePostButton from "./components/LikePostButton";
+import LikesPost from "./components/LikesPost";
+import CommentsStatPost from "./components/CommentsStatPost";
 
 function OpenPostPage() {
   const { id } = useParams();
@@ -29,12 +33,13 @@ function OpenPostPage() {
     getPost();
   }, [id]);
 
-  // console.log(post);
-
   return (
     <FlexColumn className={styles.container}>
       {isLoading ? (
-        "loading"
+        <>
+          <p>Cargando...</p>
+          <Spinner />
+        </>
       ) : (
         <>
           <FlexColumn className={styles.header}>
@@ -61,22 +66,13 @@ function OpenPostPage() {
               margin="10px"
             >
               <FlexRow alignItems="center">
-                <span role="img" aria-label="Eyes">
-                  👀
-                </span>
-                <Text text="Views (0)" />
+                <ViewsPost post={post} />
               </FlexRow>
               <FlexRow alignItems="center">
-                <span role="img" aria-label="heart">
-                  💙
-                </span>
-                <Text text="Likes (0)" />
+                <LikesPost post={post} />
               </FlexRow>
               <FlexRow alignItems="center">
-                <span role="img" aria-label="comment">
-                  📣
-                </span>
-                <Text text="Comentarios (0)" />
+                <CommentsStatPost post={post} />
               </FlexRow>
             </FlexRow>
           </FlexColumn>
@@ -84,22 +80,16 @@ function OpenPostPage() {
             <RenderHTML json={post.attributes} />
           </FlexColumn>
           <FlexRow className={styles.actionButtons}>
-            <Button typeStyle="secondary" padding="5px" margin="10px">
-              Dar Like
-              <span role="img" aria-label="heart">
-                💙
-              </span>
-            </Button>
+            <LikePostButton post={post} />
             <ShareButtons
               url={window.location.hostname}
               title={post.attributes.title}
               text="Encontre esto en Gente Uni"
             />
           </FlexRow>
+          <CommentSectionPost post={post} />
         </>
       )}
-
-      <CommentSectionPost />
     </FlexColumn>
   );
 }

@@ -42,6 +42,14 @@ Parse.Cloud.afterSave("Notification", async (req, res) => {
           icon: "https://unigente.back4app.io/images/noti.png",
         };
         break;
+      case "POST_COMMENT":
+        notification = {
+          title: "Alguien ha comentado en una de tus publicaciones",
+          body: req.context.text,
+          click_action: "https://gente-uni.firebaseapp.com/app/me",
+          icon: "https://unigente.back4app.io/images/noti.png",
+        };
+        break;
       default:
         notification = {
           title: "Tienes una nueva notificacion",

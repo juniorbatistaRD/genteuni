@@ -16,6 +16,8 @@ Parse.initialize(
   process.env.REACT_APP_JAVASCRIPT_KEY
 );
 
+console.log(process.env);
+
 ReactDOM.render(<App />, document.getElementById("root"));
 
 //Initialize push notifications with firebase

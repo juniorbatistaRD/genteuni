@@ -8,7 +8,7 @@ import Moment from "react-moment";
 import "moment/locale/es";
 import { motion } from "framer-motion";
 
-const ProfileComment = ({ notification }) => {
+const Comment = ({ notification, content }) => {
   return (
     <FlexRow alignItems="center" className={styles.notification}>
       <Avatar
@@ -16,9 +16,7 @@ const ProfileComment = ({ notification }) => {
         link={notification.attributes.triggeredBy.id}
       />
       <FlexColumn className={styles.content}>
-        <Text
-          text={`${notification.attributes.triggeredBy.attributes.username} dejo un comentario en tu perfil: “ ${notification.attributes.text} ”`}
-        />
+        <Text text={content} />
         <Moment className={styles.date} fromNow locale="es">
           {notification.attributes.createdAt}
         </Moment>
@@ -33,9 +31,15 @@ const DefaultNotification = (notification) => {
 
 const Notification = ({ notification }) => {
   const renderNotification = (notification) => {
+    let text;
+
     switch (notification.attributes.type) {
       case "PROFILE_COMMENT":
-        return <ProfileComment notification={notification} />;
+        text = `${notification.attributes.triggeredBy.attributes.username} dejo un comentario en tu perfil: “ ${notification.attributes.text} ”`;
+        return <Comment notification={notification} content={text} />;
+      case "POST_COMMENT":
+        text = `${notification.attributes.triggeredBy.attributes.username} dejo un comentario en tu post: “ ${notification.attributes.text} ”`;
+        return <Comment notification={notification} content={text} />;
 
       default:
         return <DefaultNotification notification={notification} />;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import AddProfileCommentForm from "./AddProfileCommentForm";
 import Title from "../../../components/common/Title";
 import useProfileComment from "./useProfileComment";
@@ -7,6 +7,7 @@ import styles from "./index.module.css";
 import Comment from "../../../components/Comment";
 import Text from "../../../components/common/Text";
 import { ReactComponent as EmptyIlustration } from "../../../assets/images/empty.svg";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const CommentSection = ({ user }) => {
   const {
@@ -15,13 +16,18 @@ const CommentSection = ({ user }) => {
     count,
     startFrom,
     fetchMoreComments,
-    reloadComments
+    reloadComments,
   } = useProfileComment(user);
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <>
       <Title text={`Comentarios (${count})`} margin="10px" />
-      <AddProfileCommentForm toUser={user} reloadComments={reloadComments} />
+      {currentUser ? (
+        <AddProfileCommentForm toUser={user} reloadComments={reloadComments} />
+      ) : (
+        <Text text="Inicia Sesion o Registrate para poder comentar" />
+      )}
       <div className={styles.list}>
         {isLoading ? (
           <div>
@@ -34,7 +40,7 @@ const CommentSection = ({ user }) => {
             loader={"Cargando..."}
             loadMore={() => fetchMoreComments(user)}
           >
-            {comments.map(comment => (
+            {comments.map((comment) => (
               <Comment
                 margin="10px"
                 key={comment.id}
