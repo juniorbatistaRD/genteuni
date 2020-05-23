@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Text from "../../../components/common/Text";
-import FlexRow from "../../../components/common/FlexRow";
-import { getLikesNumberByPostId } from "../../../data/queryPostLike";
+import Text from "../common/Text";
+import FlexRow from "../common/FlexRow";
+import { getLikesNumberByPostId } from "../../data/queryPostLike";
 
 const LikesPost = ({ post }) => {
   const [likes, setLikes] = useState(0);

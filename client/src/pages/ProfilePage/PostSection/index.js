@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import FlexColumn from "../../../components/common/FlexColumn";
 import Title from "../../../components/common/Title";
 import { getPostsWithPagination } from "../../../data/queryPosts";
@@ -7,18 +7,13 @@ import InfiniteScroll from "react-infinite-scroller";
 import Post from "../../../components/Post";
 
 const PostSection = ({ user }) => {
-  const {
-    startFrom,
-    count,
-    items,
-    isLoading,
-    nextPage,
-    reloadData,
-  } = useInfiniteScrolling({
-    query: getPostsWithPagination,
-    user,
-    perPage: 10,
-  });
+  const { startFrom, count, items, isLoading, nextPage } = useInfiniteScrolling(
+    {
+      query: getPostsWithPagination,
+      user,
+      perPage: 10,
+    }
+  );
 
   return (
     <FlexColumn>

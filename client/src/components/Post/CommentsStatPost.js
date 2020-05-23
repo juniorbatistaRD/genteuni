@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Text from "../../../components/common/Text";
-import FlexRow from "../../../components/common/FlexRow";
-import { getCommentsNumberByPostId } from "../../../data/queryPostComment";
+import Text from "../common/Text";
+import FlexRow from "../common/FlexRow";
+import { getCommentsNumberByPostId } from "../../data/queryPostComment";
 
 const CommentsStatPost = ({ post }) => {
   const [comments, setComments] = useState(0);

@@ -47,7 +47,7 @@ const RenderHTML = ({ json }) => {
         return <Delimiter key={index} />;
 
       default:
-        return <h1 key={index}>No found</h1>;
+        return <h1 key={index}> *** </h1>;
     }
   };
 

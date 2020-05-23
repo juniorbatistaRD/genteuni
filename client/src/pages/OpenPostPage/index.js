@@ -13,10 +13,10 @@ import "moment/locale/es";
 import ShareButtons from "../../components/common/ShareButtons";
 import CommentSectionPost from "./CommentSectionPost";
 import Spinner from "../../components/common/Spinner";
-import ViewsPost from "./components/ViewsPost";
+import ViewsPost from "../../components/Post/ViewsPost";
 import LikePostButton from "./components/LikePostButton";
-import LikesPost from "./components/LikesPost";
-import CommentsStatPost from "./components/CommentsStatPost";
+import LikesPost from "../../components/Post/LikesPost";
+import CommentsStatPost from "../../components/Post/CommentsStatPost";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Helmet } from "react-helmet";
 
@@ -57,11 +57,11 @@ function OpenPostPage() {
         </>
       ) : (
         <>
+          <Helmet>
+            <title>{`${post.attributes.title} - GenteUni`}</title>
+            <meta name="description" content={getTextFromElements()} />
+          </Helmet>
           <FlexColumn className={styles.header}>
-            <Helmet>
-              <title>{`${post.attributes.title} - GenteUni`}</title>
-              <meta name="description" content={getTextFromElements()} />
-            </Helmet>
             <Title text={post.attributes.title} fontSize="35px" />
             <FlexRow alignItems="center">
               <Moment

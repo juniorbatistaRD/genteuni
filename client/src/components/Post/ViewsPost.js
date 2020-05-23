@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import Text from "../../../components/common/Text";
-import FlexRow from "../../../components/common/FlexRow";
-import { getViewsNumberByPostId, saveView } from "../../../data/queryPostView";
-import { AuthContext } from "../../../contexts/AuthContext";
+import Text from "../common/Text";
+import FlexRow from "../common/FlexRow";
+import { getViewsNumberByPostId, saveView } from "../../data/queryPostView";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const ViewsPost = ({ post }) => {
   const [views, setViews] = useState(0);
