@@ -18,8 +18,11 @@
 .avatar {
   margin-right: 5px;
   margin-left: 5px;
+  cursor: pointer;
 }
-
+.usernameText {
+  cursor: pointer;
+}
 .content {
   background-color: #fff;
   padding: 10px;

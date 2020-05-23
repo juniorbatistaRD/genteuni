@@ -4,7 +4,7 @@ import FlexRow from "../../../components/common/FlexRow";
 import { getLikesNumberByPostId } from "../../../data/queryPostLike";
 
 const LikesPost = ({ post }) => {
-  const [likes, setLikes] = useState();
+  const [likes, setLikes] = useState(0);
 
   useEffect(() => {
     getLikesNumberByPostId(post).then((data) => setLikes(data));

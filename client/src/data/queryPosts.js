@@ -23,4 +23,17 @@ export const getPostById = async (id) => {
   return result;
 };
 
+export const getPostsWithPagination = async ({ startFrom, user, perPage }) => {
+  const query = new Parse.Query(Post);
+  query.equalTo("byUser", user);
+  query.skip(startFrom);
+  query.include("fromUser");
+  query.descending("createdAt");
+  query.limit(perPage);
+  query.withCount();
+  const result = await query.find();
+
+  return result;
+};
+
 export default query;

@@ -5,7 +5,7 @@ import { getViewsNumberByPostId, saveView } from "../../../data/queryPostView";
 import { AuthContext } from "../../../contexts/AuthContext";
 
 const ViewsPost = ({ post }) => {
-  const [views, setViews] = useState();
+  const [views, setViews] = useState(0);
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {

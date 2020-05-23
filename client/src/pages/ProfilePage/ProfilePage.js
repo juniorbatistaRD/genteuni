@@ -89,7 +89,7 @@ function ProfilePage({ user }) {
       <ProfileTabMenu />
       <div className={styles.contentContainer}>
         <Routes>
-          <Route path="/" element={<PostSection />} />
+          <Route path="/" element={<PostSection user={user} />} />
           <Route path="/comments" element={<CommentSection user={user} />} />
           <Route path="/gifts" element={<GiftSection user={user} />} />
           <Route path="/communities" element={<CommunitySection />} />

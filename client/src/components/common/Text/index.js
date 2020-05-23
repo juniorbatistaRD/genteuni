@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.css";
 
-function Text({ text, fontSize, margin, padding, className }) {
+function Text({ text, fontSize, margin, padding, className, ...props }) {
   const classNames = [className, styles.text].join(" ");
 
   return (
@@ -10,8 +10,9 @@ function Text({ text, fontSize, margin, padding, className }) {
       style={{
         fontSize,
         margin,
-        padding
+        padding,
       }}
+      {...props}
     >
       {text}
     </p>
@@ -21,7 +22,7 @@ function Text({ text, fontSize, margin, padding, className }) {
 Text.defaultProps = {
   className: " ",
   text: " ",
-  fontSize: "16px"
+  fontSize: "16px",
 };
 
 export default Text;

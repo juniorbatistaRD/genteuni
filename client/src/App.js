@@ -10,10 +10,15 @@ import MainLayout from "./layouts/MainLayout";
 import NotificationPage from "./pages/NotificationPage";
 import PostPage from "./pages/PostPage";
 import OpenPostPage from "./pages/OpenPostPage";
+import { Helmet } from "react-helmet";
 
 function App() {
   return (
     <AuthContextProvider>
+      <Helmet>
+        <title> GenteUni</title>
+        <meta name="description" content="Gente Uni" />
+      </Helmet>
       <Router>
         <Routes>
           <Route path="/" element={<LandPage />} />

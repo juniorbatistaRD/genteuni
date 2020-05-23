@@ -37,8 +37,8 @@ const Notification = ({ notification }) => {
       case "PROFILE_COMMENT":
         text = `${notification.attributes.triggeredBy.attributes.username} dejo un comentario en tu perfil: “ ${notification.attributes.text} ”`;
         return <Comment notification={notification} content={text} />;
-      case "POST_COMMENT":
-        text = `${notification.attributes.triggeredBy.attributes.username} dejo un comentario en tu post: “ ${notification.attributes.text} ”`;
+      case "POST_LIKE":
+        text = `${notification.attributes.triggeredBy.attributes.username} le gusto tu post “ ${notification.attributes.text} ”`;
         return <Comment notification={notification} content={text} />;
 
       default:

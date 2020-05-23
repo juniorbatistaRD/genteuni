@@ -27,6 +27,7 @@
     "parse": "^2.11.0",
     "react": "^16.13.1",
     "react-dom": "^16.12.0",
+    "react-helmet": "^6.0.0",
     "react-html-parser": "^2.0.2",
     "react-infinite-scroller": "^1.2.4",
     "react-moment": "^0.9.7",

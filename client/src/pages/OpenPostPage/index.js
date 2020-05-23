@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import Title from "../../components/common/Title";
 import Text from "../../components/common/Text";
 import Avatar from "../../components/common/Avatar";
@@ -17,11 +17,15 @@ import ViewsPost from "./components/ViewsPost";
 import LikePostButton from "./components/LikePostButton";
 import LikesPost from "./components/LikesPost";
 import CommentsStatPost from "./components/CommentsStatPost";
+import { AuthContext } from "../../contexts/AuthContext";
+import { Helmet } from "react-helmet";
 
 function OpenPostPage() {
   const { id } = useParams();
   const [post, setPost] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     const getPost = async () => {
@@ -33,6 +37,17 @@ function OpenPostPage() {
     getPost();
   }, [id]);
 
+  const getTextFromElements = () => {
+    const text = [];
+    post.attributes.content.blocks.map((element) => {
+      return element.data.text ? text.push(element.data.text) : " ";
+    });
+
+    return text.join(" ").replace(/<[^>]*>?/gm, "");
+  };
+
+  !isLoading && console.log(getTextFromElements());
+
   return (
     <FlexColumn className={styles.container}>
       {isLoading ? (
@@ -43,6 +58,10 @@ function OpenPostPage() {
       ) : (
         <>
           <FlexColumn className={styles.header}>
+            <Helmet>
+              <title>{`${post.attributes.title} - GenteUni`}</title>
+              <meta name="description" content={getTextFromElements()} />
+            </Helmet>
             <Title text={post.attributes.title} fontSize="35px" />
             <FlexRow alignItems="center">
               <Moment
@@ -54,11 +73,20 @@ function OpenPostPage() {
               </Moment>
               <Text text="|" />
               <Avatar
+                onClick={() =>
+                  navigate("/app/profile/" + post.attributes.byUser.id)
+                }
                 className={styles.avatar}
                 width="25px"
                 image={post.attributes.byUser.attributes.profilePicture?.url()}
               />
-              <Text text={`@${post.attributes.byUser.attributes.username}`} />
+              <Text
+                className={styles.usernameText}
+                text={`@${post.attributes.byUser.attributes.username}`}
+                onClick={() =>
+                  navigate("/app/profile/" + post.attributes.byUser.id)
+                }
+              />
             </FlexRow>
             <FlexRow
               justifyContent="space-around"
@@ -80,7 +108,7 @@ function OpenPostPage() {
             <RenderHTML json={post.attributes} />
           </FlexColumn>
           <FlexRow className={styles.actionButtons}>
-            <LikePostButton post={post} />
+            {currentUser && <LikePostButton post={post} />}
             <ShareButtons
               url={window.location.hostname}
               title={post.attributes.title}
