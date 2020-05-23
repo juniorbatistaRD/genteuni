@@ -20,6 +20,7 @@ import CommentSection from "./CommentSection";
 import GiftSection from "./GiftSection";
 import CommunitySection from "./CommunitySection";
 import ProfileTabMenu from "./components/ProfileTabMenu";
+import MessageButton from "./components/MessageButton";
 
 function ProfilePage({ user }) {
   const { currentUser } = useContext(AuthContext);
@@ -50,13 +51,7 @@ function ProfilePage({ user }) {
               <div className={styles.buttons}>
                 <FollowButton userToFollow={user} />
 
-                <Button
-                  typeStyle="secondary"
-                  padding="5px 15px"
-                  margin="0px 10px 0px 0px"
-                >
-                  Hablar
-                </Button>
+                <MessageButton toUser={user} />
                 <MenuProfile user={user} />
               </div>
             )}

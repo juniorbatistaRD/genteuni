@@ -7,6 +7,5 @@ Parse.Cloud.define("readAllNotifications", async (req) => {
   query.each(function (obj) {
     obj.set("wasSeen", true);
     obj.save();
-    console.log(obj);
   });
 });

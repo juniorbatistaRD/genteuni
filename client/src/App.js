@@ -11,6 +11,7 @@ import NotificationPage from "./pages/NotificationPage";
 import PostPage from "./pages/PostPage";
 import OpenPostPage from "./pages/OpenPostPage";
 import { Helmet } from "react-helmet";
+import Messagepage from "./pages/MessagePage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/me/*" element={<ProfilePage />} />
             <Route path="/profile/:user/*" element={<ProfilePage />} />
             <Route path="/notifications" element={<NotificationPage />} />
+            <Route path="/message" element={<Messagepage />} />
           </Route>
         </Routes>
       </Router>

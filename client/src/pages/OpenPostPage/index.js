@@ -19,6 +19,7 @@ import LikesPost from "../../components/Post/LikesPost";
 import CommentsStatPost from "../../components/Post/CommentsStatPost";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Helmet } from "react-helmet";
+import { saveView } from "../../data/queryPostView";
 
 function OpenPostPage() {
   const { id } = useParams();
@@ -27,6 +28,7 @@ function OpenPostPage() {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
 
+  //load post
   useEffect(() => {
     const getPost = async () => {
       setIsLoading(true);
@@ -36,6 +38,13 @@ function OpenPostPage() {
     };
     getPost();
   }, [id]);
+
+  //add view to post
+  useEffect(() => {
+    if (currentUser && currentUser.id !== post.attributes.byUser.id) {
+      saveView(currentUser, post);
+    }
+  }, [post, currentUser]);
 
   const getTextFromElements = () => {
     const text = [];

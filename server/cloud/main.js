@@ -9,5 +9,6 @@ require("./validations");
 //assign default role
 require("./addDefaultRoleToUser");
 
+require("./sendMessageToUser");
 require("./sendNotification");
 require("./triggerNotifications");
