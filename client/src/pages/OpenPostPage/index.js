@@ -20,6 +20,7 @@ import CommentsStatPost from "../../components/Post/CommentsStatPost";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Helmet } from "react-helmet";
 import { saveView } from "../../data/queryPostView";
+import extractTextFromPost from "../../helpers/extractTextFromPost";
 
 function OpenPostPage() {
   const { id } = useParams();
@@ -41,21 +42,12 @@ function OpenPostPage() {
 
   //add view to post
   useEffect(() => {
-    if (currentUser && currentUser.id !== post.attributes.byUser.id) {
-      saveView(currentUser, post);
+    if (!isLoading) {
+      if (currentUser && currentUser.id !== post.attributes.byUser.id) {
+        saveView(currentUser, post);
+      }
     }
   }, [post, currentUser]);
-
-  const getTextFromElements = () => {
-    const text = [];
-    post.attributes.content.blocks.map((element) => {
-      return element.data.text ? text.push(element.data.text) : " ";
-    });
-
-    return text.join(" ").replace(/<[^>]*>?/gm, "");
-  };
-
-  !isLoading && console.log(getTextFromElements());
 
   return (
     <FlexColumn className={styles.container}>
@@ -68,7 +60,10 @@ function OpenPostPage() {
         <>
           <Helmet>
             <title>{`${post.attributes.title} - GenteUni`}</title>
-            <meta name="description" content={getTextFromElements()} />
+            <meta
+              name="description"
+              content={extractTextFromPost(post.attributes.content.blocks)}
+            />
           </Helmet>
           <FlexColumn className={styles.header}>
             <Title text={post.attributes.title} fontSize="35px" />

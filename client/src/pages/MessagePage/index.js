@@ -7,6 +7,7 @@ import InfiniteScroll from "react-infinite-scroller";
 import Avatar from "../../components/common/Avatar";
 import FlexRow from "../../components/common/FlexRow";
 import Text from "../../components/common/Text";
+import ConversationPreview from "./components/ConversationPreview";
 
 const Messagepage = () => {
   const { currentUser } = useContext(AuthContext);
@@ -17,30 +18,29 @@ const Messagepage = () => {
     user: currentUser,
   });
 
-  const renderChat = (item) => {
-    return (
-      <div>
-        {item.attributes.members.map((user) => {
-          if (user.id !== currentUser.id) {
-            return (
-              <FlexRow key={item.id}>
-                <Text text={user.attributes.username} />
-                <Avatar image={user.attributes.profilePicture?.url()} />
-              </FlexRow>
-            );
-          }
-        })}
-      </div>
-    );
-  };
+  // const renderChat = (item) => {
+  //   return (
+  //     <div>
+  //       {item.attributes.members.map((user) => {
+  //         if (user.id !== currentUser.id) {
+  //           return (
+  //             <FlexRow key={item.id}>
+  //               <Text text={user.attributes.username} />
+  //               <Avatar image={user.attributes.profilePicture?.url()} />
+  //             </FlexRow>
+  //           );
+  //         }
+  //       })}
+  //     </div>
+  //   );
+  // };
 
   return (
     <div>
       <Title text="Mensajes"></Title>
       <InfiniteScroll hasMore={startFrom < count} loadMore={nextPage}>
         {items.map((item) => {
-          console.log(item.attributes.members);
-          return <div key={item.id}>{renderChat(item)}</div>;
+          return <ConversationPreview key={item.id} conversation={item} />;
         })}
       </InfiniteScroll>
     </div>
