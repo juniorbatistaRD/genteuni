@@ -3,11 +3,14 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import FlexRow from "../../../components/common/FlexRow";
 import Avatar from "../../../components/common/Avatar";
 import Text from "../../../components/common/Text";
+import styles from "./ConversationPreview.module.css";
+import { useNavigate } from "react-router-dom";
 
 const ConversationPreview = ({ conversation }) => {
   const { currentUser } = useContext(AuthContext);
   const [fromUser, setFromUser] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getUser = async () => {
@@ -22,12 +25,14 @@ const ConversationPreview = ({ conversation }) => {
     };
 
     getUser();
-  }, []);
-
-  console.log([fromUser]);
+  }, [conversation.attributes.members, currentUser.id]);
 
   return (
-    <FlexRow>
+    <FlexRow
+      className={styles.container}
+      alignItems="center"
+      onClick={() => navigate("/chat/" + conversation.id)}
+    >
       {!isLoading && (
         <>
           <Avatar image={fromUser.attributes.profilePicture?.url()} />

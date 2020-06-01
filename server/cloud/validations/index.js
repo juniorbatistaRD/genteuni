@@ -8,3 +8,4 @@ require("./validateGift");
 require("./validatePost");
 require("./validatePostComment");
 require("./validatePostLike");
+require("./validateMessage");

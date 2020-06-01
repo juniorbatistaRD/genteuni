@@ -4,9 +4,7 @@ import useInfiniteScrolling from "../../hooks/useInfinteScrolling";
 import { getUserConversationsWithPagination } from "../../data/queryConversations";
 import { AuthContext } from "../../contexts/AuthContext";
 import InfiniteScroll from "react-infinite-scroller";
-import Avatar from "../../components/common/Avatar";
-import FlexRow from "../../components/common/FlexRow";
-import Text from "../../components/common/Text";
+
 import ConversationPreview from "./components/ConversationPreview";
 
 const Messagepage = () => {
@@ -18,26 +16,9 @@ const Messagepage = () => {
     user: currentUser,
   });
 
-  // const renderChat = (item) => {
-  //   return (
-  //     <div>
-  //       {item.attributes.members.map((user) => {
-  //         if (user.id !== currentUser.id) {
-  //           return (
-  //             <FlexRow key={item.id}>
-  //               <Text text={user.attributes.username} />
-  //               <Avatar image={user.attributes.profilePicture?.url()} />
-  //             </FlexRow>
-  //           );
-  //         }
-  //       })}
-  //     </div>
-  //   );
-  // };
-
   return (
     <div>
-      <Title text="Mensajes"></Title>
+      <Title text="Conversaciones"></Title>
       <InfiniteScroll hasMore={startFrom < count} loadMore={nextPage}>
         {items.map((item) => {
           return <ConversationPreview key={item.id} conversation={item} />;

@@ -12,6 +12,7 @@ import PostPage from "./pages/PostPage";
 import OpenPostPage from "./pages/OpenPostPage";
 import { Helmet } from "react-helmet";
 import Messagepage from "./pages/MessagePage";
+import ConversationPage from "./pages/ConversationPage";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/notifications" element={<NotificationPage />} />
             <Route path="/message" element={<Messagepage />} />
           </Route>
+          <Route path="/chat/:id" element={<ConversationPage />} />
         </Routes>
       </Router>
     </AuthContextProvider>

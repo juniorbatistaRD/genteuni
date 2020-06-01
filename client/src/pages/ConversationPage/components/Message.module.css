@@ -1,0 +1,22 @@
+.container {
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  width: fit-content;
+  max-width: 80%;
+}
+
+.left {
+  background-color: #4173b2;
+  color: #fff;
+  word-break: break-all;
+  text-align: left;
+}
+.right {
+  margin-left: auto;
+  background-color: white;
+  color: #696969;
+  text-align: right;
+  word-break: break-all;
+}

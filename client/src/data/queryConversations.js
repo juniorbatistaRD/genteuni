@@ -22,4 +22,10 @@ export const getUserConversationsWithPagination = async ({
   return result;
 };
 
+export const getConversationById = async (id) => {
+  const query = new Parse.Query(Conversation);
+
+  return await query.get(id);
+};
+
 export default query;

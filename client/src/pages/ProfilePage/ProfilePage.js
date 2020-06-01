@@ -4,7 +4,6 @@ import { AuthContext } from "../../contexts/AuthContext";
 import styles from "./ProfilePage.module.css";
 import CoverImage from "./components/CoverImage";
 import Avatar from "../../components/common/Avatar";
-import Button from "../../components/common/Button";
 import { ReactComponent as BioIcon } from "../../assets/icons/feather.svg";
 import { ReactComponent as StudentIcon } from "../../assets/icons/student.svg";
 import { ReactComponent as PinIcon } from "../../assets/icons/pin.svg";

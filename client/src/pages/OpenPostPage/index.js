@@ -47,7 +47,7 @@ function OpenPostPage() {
         saveView(currentUser, post);
       }
     }
-  }, [post, currentUser]);
+  }, [post, currentUser, isLoading]);
 
   return (
     <FlexColumn className={styles.container}>
