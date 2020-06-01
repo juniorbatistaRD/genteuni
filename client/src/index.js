@@ -5,16 +5,16 @@ import Parse from "parse";
 import * as serviceWorker from "./serviceWorker";
 import { initializeFirebase } from "./push-notification";
 
+Parse.initialize(
+  process.env.REACT_APP_ID,
+  process.env.REACT_APP_JAVASCRIPT_KEY
+);
+
 //Initialize Parse Server SDK
 Parse.serverURL =
   process.env.NODE_ENV !== "production"
     ? "http://localhost:1337/parse"
     : "https://parseapi.back4app.com/";
-
-Parse.initialize(
-  process.env.REACT_APP_ID,
-  process.env.REACT_APP_JAVASCRIPT_KEY
-);
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
