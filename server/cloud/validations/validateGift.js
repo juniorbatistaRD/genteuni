@@ -2,6 +2,8 @@ Parse.Cloud.beforeSave("Gift", async (req, res) => {
   const query = new Parse.Query("Gift");
   const gift = req.object;
 
+  gift.set("fromUser", req.user);
+
   var yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
 
@@ -16,4 +18,10 @@ Parse.Cloud.beforeSave("Gift", async (req, res) => {
 
   //make fromUser forced to be currentUser
   gift.set("fromUser", req.user);
+
+  //for notifications
+  req.context = {
+    triggeredBy: req.user,
+    forUser: gift.get("toUser"),
+  };
 });

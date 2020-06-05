@@ -25,8 +25,15 @@ const Comment = ({ notification, content }) => {
   );
 };
 
-const DefaultNotification = (notification) => {
-  return <p>Default</p>;
+const DefaultNotification = ({ notification }) => {
+  return (
+    <FlexRow className={styles.notification}>
+      <Text text={notification.attributes?.text} />
+      <Moment className={styles.date} fromNow locale="es">
+        {notification.attributes.createdAt}
+      </Moment>
+    </FlexRow>
+  );
 };
 
 const Notification = ({ notification }) => {
@@ -37,8 +44,17 @@ const Notification = ({ notification }) => {
       case "PROFILE_COMMENT":
         text = `${notification.attributes.triggeredBy.attributes.username} dejo un comentario en tu perfil: “ ${notification.attributes.text} ”`;
         return <Comment notification={notification} content={text} />;
+      case "POST_COMMENT":
+        text = `${notification.attributes.triggeredBy.attributes.username} dejo un comentario en tu post: “ ${notification.attributes.text} ”`;
+        return <Comment notification={notification} content={text} />;
+      case "GIFT":
+        text = `${notification.attributes.triggeredBy.attributes.username} te envio un regalo`;
+        return <Comment notification={notification} content={text} />;
       case "POST_LIKE":
         text = `${notification.attributes.triggeredBy.attributes.username} le gusto tu post “ ${notification.attributes.text} ”`;
+        return <Comment notification={notification} content={text} />;
+      case "FOLLOW":
+        text = `${notification.attributes.triggeredBy.attributes.username} te empezo a seguir   `;
         return <Comment notification={notification} content={text} />;
 
       default:
