@@ -17,7 +17,6 @@ import MenuProfile from "./components/MenuProfile";
 import PostSection from "./PostSection";
 import CommentSection from "./CommentSection";
 import GiftSection from "./GiftSection";
-import CommunitySection from "./CommunitySection";
 import ProfileTabMenu from "./components/ProfileTabMenu";
 import MessageButton from "./components/MessageButton";
 
@@ -85,8 +84,7 @@ function ProfilePage({ user }) {
         <Routes>
           <Route path="/" element={<PostSection user={user} />} />
           <Route path="/comments" element={<CommentSection user={user} />} />
-          <Route path="/gifts" element={<GiftSection user={user} />} />
-          <Route path="/communities" element={<CommunitySection />} />
+          <Route path="/gifts" element={<GiftSection user={user} />} />/
         </Routes>
       </div>
     </div>

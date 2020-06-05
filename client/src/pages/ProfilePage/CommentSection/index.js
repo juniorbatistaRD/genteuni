@@ -1,46 +1,49 @@
 import React, { useContext } from "react";
 import AddProfileCommentForm from "./AddProfileCommentForm";
 import Title from "../../../components/common/Title";
-import useProfileComment from "./useProfileComment";
 import InfiniteScroll from "react-infinite-scroller";
-import styles from "./index.module.css";
 import Comment from "../../../components/Comment";
 import Text from "../../../components/common/Text";
 import { ReactComponent as EmptyIlustration } from "../../../assets/images/empty.svg";
 import { AuthContext } from "../../../contexts/AuthContext";
-
+import FlexColumn from "../../../components/common/FlexColumn";
+import useInfiniteScrolling from "../../../hooks/useInfinteScrolling";
+import { getCommentsWithPagination } from "../../../data/queryProfileComments";
 const CommentSection = ({ user }) => {
   const {
-    comments,
     isLoading,
-    count,
+    items,
+    reloadData,
     startFrom,
-    fetchMoreComments,
-    reloadComments,
-  } = useProfileComment(user);
+    count,
+    nextPage,
+  } = useInfiniteScrolling({
+    query: getCommentsWithPagination,
+    user,
+    perPage: 10,
+  });
+
   const { currentUser } = useContext(AuthContext);
 
   return (
     <>
       <Title text={`Comentarios (${count})`} margin="10px" />
       {currentUser ? (
-        <AddProfileCommentForm toUser={user} reloadComments={reloadComments} />
+        <AddProfileCommentForm toUser={user} reloadComments={reloadData} />
       ) : (
         <Text text="Inicia Sesion o Registrate para poder comentar" />
       )}
-      <div className={styles.list}>
+      <FlexColumn>
         {isLoading ? (
-          <div>
-            <Text text="Cargando..." />
-          </div>
+          <Text text="Cargando..." />
         ) : (
           <InfiniteScroll
             pageStart={startFrom}
             hasMore={startFrom < count}
             loader={"Cargando..."}
-            loadMore={() => fetchMoreComments(user)}
+            loadMore={nextPage}
           >
-            {comments.map((comment) => (
+            {items.map((comment) => (
               <Comment
                 margin="10px"
                 key={comment.id}
@@ -51,14 +54,14 @@ const CommentSection = ({ user }) => {
             ))}
           </InfiniteScroll>
         )}
-      </div>
+      </FlexColumn>
 
       {count < 1 && !isLoading && (
-        <div className={styles.nothingFound}>
+        <FlexColumn alignItems="center" margin="auto">
           <Title text="Nadie ha comentado aun! 😥" fontSize="16px" />
           <Title text="Se el primero!😎 " fontSize="16px" />
           <EmptyIlustration width="200px" height="200px" />
-        </div>
+        </FlexColumn>
       )}
     </>
   );

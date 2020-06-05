@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.css";
 
-function Title({ text, fontSize, margin, typeStyle, className }) {
+function Title({ text, fontSize, margin, typeStyle, className, ...props }) {
   const classNames = [styles[typeStyle], className].join(" ");
 
   return (
@@ -9,8 +9,9 @@ function Title({ text, fontSize, margin, typeStyle, className }) {
       className={classNames}
       style={{
         fontSize,
-        margin
+        margin,
       }}
+      {...props}
     >
       {text}
     </h2>
@@ -21,7 +22,7 @@ Title.defaultProps = {
   className: " ",
   text: " ",
   fontSize: null,
-  typeStyle: "primary"
+  typeStyle: "primary",
 };
 
 //can be primary or secondary

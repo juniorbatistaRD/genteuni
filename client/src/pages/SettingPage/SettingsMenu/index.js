@@ -11,6 +11,7 @@ import { ReactComponent as SchoolIcon } from "../../../assets/icons/school.svg";
 import { ReactComponent as KeyIcon } from "../../../assets/icons/key.svg";
 import { ReactComponent as FacebookIcon } from "../../../assets/icons/facebook-out-line.svg";
 import { ReactComponent as LogoutIcon } from "../../../assets/icons/logout.svg";
+import { ReactComponent as BellIcon } from "../../../assets/icons/bell.svg";
 import { useNavigate } from "react-router-dom";
 
 function SettingsMenu() {
@@ -78,7 +79,7 @@ function SettingsMenu() {
       <SettingOption
         title="Notificaciones"
         description="Configura las notificaciones de dispositivo"
-        Icon={FacebookIcon}
+        Icon={BellIcon}
         onClick={() => navigate("notification")}
       />
       <SettingOption

@@ -23,7 +23,7 @@ const SendMessageForm = ({ conversation, reloadData }) => {
       >
         <Form>
           <FlexRow>
-            <TextArea name="message" className={styles.textarea} />
+            <TextArea name="message" className={styles.textarea} required />
             <Button type="submit">Enviar</Button>
           </FlexRow>
         </Form>

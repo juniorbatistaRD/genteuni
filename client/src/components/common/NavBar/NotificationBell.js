@@ -20,7 +20,7 @@ function NotificationBell() {
 
       //receive new notifications
       subscrition.on("create", () => setNotificationNumber((prev) => prev + 1));
-      //if notificaion was read
+      //if notification was read
       subscrition.on("leave", () => setNotificationNumber((prev) => prev - 1));
     };
 

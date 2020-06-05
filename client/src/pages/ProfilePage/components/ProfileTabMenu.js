@@ -27,13 +27,6 @@ const ProfileTabMenu = () => {
         >
           <li>Regalos</li>
         </NavLink>
-        <NavLink
-          activeClassName={styles.menuOptionActive}
-          to="communities"
-          className={styles.menuOption}
-        >
-          <li>Comunidades</li>
-        </NavLink>
       </ul>
     </div>
   );

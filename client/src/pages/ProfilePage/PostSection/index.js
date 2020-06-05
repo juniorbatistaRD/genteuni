@@ -5,6 +5,7 @@ import { getPostsWithPagination } from "../../../data/queryPosts";
 import useInfiniteScrolling from "../../../hooks/useInfinteScrolling";
 import InfiniteScroll from "react-infinite-scroller";
 import Post from "../../../components/Post";
+import { ReactComponent as EmptyIlustration } from "../../../assets/images/empty.svg";
 
 const PostSection = ({ user }) => {
   const { startFrom, count, items, isLoading, nextPage } = useInfiniteScrolling(
@@ -16,7 +17,7 @@ const PostSection = ({ user }) => {
   );
 
   return (
-    <FlexColumn>
+    <>
       <Title text="Publicaciones" margin="10px" />
 
       {!isLoading && (
@@ -31,7 +32,14 @@ const PostSection = ({ user }) => {
           ))}
         </InfiniteScroll>
       )}
-    </FlexColumn>
+
+      {count < 1 && !isLoading && (
+        <FlexColumn alignItems="center" margin="auto">
+          <Title text="No ha publicado nada aun" fontSize="16px" />
+          <EmptyIlustration width="200px" height="200px" />
+        </FlexColumn>
+      )}
+    </>
   );
 };
 

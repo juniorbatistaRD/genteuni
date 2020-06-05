@@ -10,7 +10,7 @@ export const saveComment = (text, toUser) => {
   return comment.save();
 };
 
-export const getProfileCommentByUser = toUser => {
+export const getProfileCommentByUser = (toUser) => {
   const query = new Parse.Query(Comment);
   query.equalTo("toUser", toUser);
   return query.find();
@@ -19,7 +19,7 @@ export const getProfileCommentByUser = toUser => {
 export const getCommentsWithPagination = async ({
   startFrom,
   user,
-  perPage
+  perPage,
 }) => {
   const query = new Parse.Query(Comment);
   query.equalTo("toUser", user);

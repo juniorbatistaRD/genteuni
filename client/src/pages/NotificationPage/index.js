@@ -8,6 +8,8 @@ import InfiniteScroll from "react-infinite-scroller";
 import Notification from "./Notification";
 import Text from "../../components/common/Text";
 import Parse from "parse";
+import { ReactComponent as EmptyIlustration } from "../../assets/images/empty.svg";
+import styles from "./index.module.css";
 
 function NotificationPage() {
   const { currentUser } = useContext(AuthContext);
@@ -24,7 +26,7 @@ function NotificationPage() {
   }, []);
 
   return (
-    <FlexColumn margin="10px">
+    <FlexColumn margin="10px" className={styles.container}>
       <Title text="Notificaciones" />
       {isLoading ? (
         <Text text="Cargando.." />
@@ -34,6 +36,13 @@ function NotificationPage() {
             <Notification key={item.id} notification={item} />
           ))}
         </InfiniteScroll>
+      )}
+
+      {count < 1 && !isLoading && (
+        <FlexColumn alignItems="center" margin="auto">
+          <Title text="No tienes notificaciones" fontSize="16px" />
+          <EmptyIlustration width="200px" height="200px" />
+        </FlexColumn>
       )}
     </FlexColumn>
   );
