@@ -1,14 +1,3 @@
-//get data with need for the notification
-Parse.Cloud.beforeSave("PostComment", async (req, res) => {
-  const comment = req.object;
-
-  req.context = {
-    triggeredBy: req.user,
-    post: comment.get("post"),
-    text: comment.get("text"),
-  };
-});
-
 Parse.Cloud.afterSave("PostComment", async (req, res) => {
   const context = req.context;
   const post = await context.post.fetch();

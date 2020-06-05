@@ -34,4 +34,11 @@ Parse.Cloud.beforeSave("PostLike", async (req, res) => {
   if (result > 0) {
     throw "Ya sigues a este usuario";
   }
+
+  //for notification
+  req.context = {
+    triggeredBy: req.user,
+    forUser: post.attributes.byUser,
+    post: post,
+  };
 });
