@@ -3,6 +3,7 @@ var validate = require("validate.js");
 Parse.Cloud.beforeSave("PostLike", async (req, res) => {
   const query = new Parse.Query("PostLike");
   const postLike = req.object;
+  const post = await postLike.get("post").fetch();
 
   //make fromUser forced to be currentUser
   postLike.set("fromUser", req.user);

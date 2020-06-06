@@ -18,9 +18,14 @@ export const saveSchool = async ({ name, country, isHighSchool, website }) => {
 
     return school;
   } catch (err) {
-    console.log("hey");
     throw err;
   }
+};
+
+export const getSchoolById = async (id) => {
+  const query = new Parse.Query(School);
+
+  return await query.get(id);
 };
 
 export default query;

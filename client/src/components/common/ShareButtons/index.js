@@ -12,15 +12,17 @@ import styles from "./index.module.css";
 import FlexRow from "../FlexRow";
 import Text from "../Text";
 import Button from "../Button";
+import { site_url } from "../../../config/config";
 
 const ShareButtons = ({ title, text, url }) => {
+  const link = `${site_url}/${url}`;
   return (
     <FlexRow alignItems="center" className={styles.container}>
       {navigator.share ? (
         <Button
           typeStyle="secondary"
           className={styles.shareButton}
-          onClick={() => navigator.share({ ...title, ...text, url })}
+          onClick={() => navigator.share({ ...title, ...text, link })}
         >
           Compartir
           <ShareIcon className={styles.shareIcon} width="15px" height="15px" />
@@ -28,7 +30,7 @@ const ShareButtons = ({ title, text, url }) => {
       ) : (
         <>
           <Text text="Compartir en :" />
-          <FacebookShareButton url={url}>
+          <FacebookShareButton url={link}>
             <div className={styles.button}>
               Facebook
               <FacebookIcon
@@ -38,13 +40,13 @@ const ShareButtons = ({ title, text, url }) => {
               />
             </div>
           </FacebookShareButton>
-          <TwitterShareButton url={url}>
+          <TwitterShareButton url={link}>
             <div className={styles.button}>
               Twitter
               <TwitterIcon className={styles.icon} width="25px" height="25px" />
             </div>
           </TwitterShareButton>
-          <WhatsappShareButton url={url}>
+          <WhatsappShareButton url={link}>
             <div className={styles.button}>
               Whatsapp
               <WhatsappIcon

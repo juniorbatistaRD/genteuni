@@ -1,0 +1,23 @@
+.headerContainer {
+  margin: 10px;
+  background-color: #fff;
+}
+
+.infoList {
+  margin: 10px;
+  list-style: none;
+}
+
+.icon {
+  margin-right: 10px;
+  width: 15px;
+  height: 15px;
+}
+
+/* Device = Most of the Smartphones Mobiles
+(Portrait) and Low Resolution tablets */
+@media (max-width: 768px) {
+  .headerContainer {
+    margin: 0px;
+  }
+}

@@ -61,6 +61,11 @@ function OpenPostPage() {
           <Helmet>
             <title>{`${post.attributes.title} - GenteUni`}</title>
             <meta
+              name="og:title"
+              property="og:title"
+              content={post.attributes.title}
+            />
+            <meta
               name="description"
               content={extractTextFromPost(post.attributes.content.blocks)}
             />
@@ -114,7 +119,7 @@ function OpenPostPage() {
           <FlexRow className={styles.actionButtons}>
             {currentUser && <LikePostButton post={post} />}
             <ShareButtons
-              url={window.location.hostname}
+              url={"app/post/" + post.id}
               title={post.attributes.title}
               text="Encontre esto en Gente Uni"
             />

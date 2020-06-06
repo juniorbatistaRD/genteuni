@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+  background-image: url("../../../assets/images/book_with_overlay.png");
+  background-position: center;
+}
+
+.text {
+  color: #fff;
+  font-size: 38px;
+  text-align: center;
+}
+
+/* Device = Most of the Smartphones Mobiles
+(Portrait) and Low Resolution tablets */
+@media (max-width: 768px) {
+  .text {
+    font-size: 28px;
+  }
+}

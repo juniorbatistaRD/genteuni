@@ -13,4 +13,10 @@ Parse.Cloud.beforeSave("Follow", async (req, res) => {
   if (result > 0) {
     throw "Ya sigues a este usuario";
   }
+
+  //for notification
+  req.context = {
+    triggeredBy: req.user,
+    forUser: follow.get("toUser"),
+  };
 });

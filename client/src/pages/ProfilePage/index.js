@@ -18,7 +18,10 @@ function ProfilePageContainer() {
     const addView = (toUser) => {
       //check is user already have seen this profile if not mark as seen
       const usersSeen = JSON.parse(localStorage.getItem("usersSeen"));
-      if (usersSeen.includes(toUser.id)) return;
+
+      if (!usersSeen || usersSeen.includes(toUser.id)) return;
+
+      console.log(usersSeen);
       localStorage.setItem(
         "usersSeen",
         JSON.stringify([...usersSeen, toUser.id])

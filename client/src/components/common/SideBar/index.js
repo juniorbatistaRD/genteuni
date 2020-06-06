@@ -18,7 +18,7 @@ function SideBar({ setMenuOpen, className, ...props }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
 
-  const goTo = link => {
+  const goTo = (link) => {
     navigate(link);
     if (setMenuOpen) {
       setMenuOpen(false);
@@ -72,7 +72,7 @@ function SideBar({ setMenuOpen, className, ...props }) {
             className={styles["menu-icon"]}
             src={communityIcon}
           />
-          <span>Comunidades</span>
+          <span>Profesores</span>
         </li>
         <li>
           <img alt="option" className={styles["menu-icon"]} src={schoolIcon} />
@@ -117,7 +117,7 @@ function SideBar({ setMenuOpen, className, ...props }) {
 }
 
 SideBar.defaultProps = {
-  className: styles.container
+  className: styles.container,
 };
 
 export default SideBar;

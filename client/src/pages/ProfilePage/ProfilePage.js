@@ -17,8 +17,8 @@ import MenuProfile from "./components/MenuProfile";
 import PostSection from "./PostSection";
 import CommentSection from "./CommentSection";
 import GiftSection from "./GiftSection";
-import ProfileTabMenu from "./components/ProfileTabMenu";
 import MessageButton from "./components/MessageButton";
+import TabsMenu from "../../components/common/TabsMenu";
 
 function ProfilePage({ user }) {
   const { currentUser } = useContext(AuthContext);
@@ -66,6 +66,9 @@ function ProfilePage({ user }) {
           )}
           {user.attributes.school && (
             <ItemWithIcon
+              onClick={() =>
+                navigate("/app/school/" + user.attributes.school.id + "/")
+              }
               IconSVG={StudentIcon}
               text={user.attributes.school.attributes.name}
             />
@@ -79,7 +82,14 @@ function ProfilePage({ user }) {
           )}
         </div>
       </div>
-      <ProfileTabMenu />
+
+      <TabsMenu
+        options={[
+          { link: "./", name: "Posts" },
+          { link: "./comments", name: "Comentarios" },
+          { link: "./gifts", name: "Regalos" },
+        ]}
+      />
       <div className={styles.contentContainer}>
         <Routes>
           <Route path="/" element={<PostSection user={user} />} />

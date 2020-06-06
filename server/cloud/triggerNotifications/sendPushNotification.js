@@ -36,7 +36,7 @@ Parse.Cloud.afterSave("Notification", async (req, res) => {
     switch (req.context.type) {
       case "PROFILE_COMMENT":
         notification = {
-          title: "Alguien ha comentado en tu perfil",
+          title: "💌 Alguien comento en tu perfil",
           body: req.context.text,
           click_action: "https://gente-uni.firebaseapp.com/app/me/comments",
           icon: "https://unigente.back4app.io/images/noti.png",
@@ -44,7 +44,7 @@ Parse.Cloud.afterSave("Notification", async (req, res) => {
         break;
       case "POST_COMMENT":
         notification = {
-          title: "Alguien ha comentado en una de tus publicaciones",
+          title: " 💬 Alguien comento en una de tus publicaciones",
           body: req.context.text,
           click_action: "https://gente-uni.firebaseapp.com/app/me",
           icon: "https://unigente.back4app.io/images/noti.png",
@@ -52,7 +52,7 @@ Parse.Cloud.afterSave("Notification", async (req, res) => {
         break;
       case "POST_LIKE":
         notification = {
-          title: "Alguien le gusto tu post",
+          title: "👍 Alguien le gusto tu post",
           body: "Alguien le gusto tu post",
           click_ation: "https://gente-uni.firebaseapp.com/app/notifications",
           icon: "https://unigente.back4app.io/images/noti.png",
@@ -68,7 +68,7 @@ Parse.Cloud.afterSave("Notification", async (req, res) => {
         break;
       case "GIFT":
         notification = {
-          title: "Recibiste un regalo",
+          title: " 🎁 Recibiste un regalo",
           body: "Entra a genteuni para ver que fue",
           click_ation: "https://gente-uni.firebaseapp.com/app/notifications",
           icon: "https://unigente.back4app.io/images/noti.png",
