@@ -20,8 +20,6 @@ function ProfilePageContainer() {
       const usersSeen = JSON.parse(localStorage.getItem("usersSeen"));
 
       if (!usersSeen || usersSeen.includes(toUser.id)) return;
-
-      console.log(usersSeen);
       localStorage.setItem(
         "usersSeen",
         JSON.stringify([...usersSeen, toUser.id])

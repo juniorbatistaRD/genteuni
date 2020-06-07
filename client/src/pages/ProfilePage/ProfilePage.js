@@ -48,7 +48,6 @@ function ProfilePage({ user }) {
             {currentUser && currentUser.id !== user.id && (
               <div className={styles.buttons}>
                 <FollowButton userToFollow={user} />
-
                 <MessageButton toUser={user} />
                 <MenuProfile user={user} />
               </div>
@@ -58,14 +57,23 @@ function ProfilePage({ user }) {
         <div className={styles.infoBottom}>
           <div className={styles.stats}>
             <Views user={user} />
-            <Followers user={user} onClick={() => navigate("followers")} />
-            <Following user={user} onClick={() => navigate("following")} />
+            <Followers
+              user={user}
+              onClick={() => navigate("followers")}
+              className={styles.pointer}
+            />
+            <Following
+              user={user}
+              onClick={() => navigate("following")}
+              className={styles.pointer}
+            />
           </div>
           {user.attributes.bio && (
             <ItemWithIcon IconSVG={BioIcon} text={user.attributes.bio} />
           )}
           {user.attributes.school && (
             <ItemWithIcon
+              className={styles.pointer}
               onClick={() =>
                 navigate("/app/school/" + user.attributes.school.id + "/")
               }

@@ -33,6 +33,10 @@
   align-self: flex-start;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .buttons {
   display: flex;
   flex-direction: row;

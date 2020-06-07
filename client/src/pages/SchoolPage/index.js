@@ -11,7 +11,6 @@ import { ReactComponent as PinIcon } from "../../assets/icons/pin.svg";
 import FlexRow from "../../components/common/FlexRow";
 import { ReactComponent as StudentIcon } from "../../assets/icons/student.svg";
 import { ReactComponent as ChainIcon } from "../../assets/icons/chain.svg";
-import { Link } from "react-router-dom";
 import ReviewsSection from "./ReviewsSection";
 
 const SchoolPage = () => {
@@ -53,6 +52,7 @@ const SchoolPage = () => {
               <li>
                 <a
                   target="_blank"
+                  rel="noopener noreferrer"
                   href={school.attributes.website}
                   style={{ textDecoration: "none" }}
                 >
@@ -86,7 +86,10 @@ const SchoolPage = () => {
             />
           </FlexColumn>
           <Routes>
-            <Route path="reviews" element={<ReviewsSection />} />
+            <Route
+              path="reviews"
+              element={<ReviewsSection school={school} />}
+            />
           </Routes>
         </FlexColumn>
       )}

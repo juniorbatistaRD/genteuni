@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./Stat.module.css";
 
-function Stat({ number, text, ...props }) {
+function Stat({ number, text, className, ...props }) {
+  const classNames = [styles.container, className].join(" ");
+
   return (
-    <div className={styles.container} {...props}>
+    <div className={classNames} {...props}>
       <span className={styles.number}>{number}</span>
       <span className={styles.name}>{text}</span>
     </div>

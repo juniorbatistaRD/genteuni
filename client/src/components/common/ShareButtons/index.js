@@ -22,7 +22,7 @@ const ShareButtons = ({ title, text, url }) => {
         <Button
           typeStyle="secondary"
           className={styles.shareButton}
-          onClick={() => navigator.share({ ...title, ...text, link })}
+          onClick={() => navigator.share({ title, text, url: link })}
         >
           Compartir
           <ShareIcon className={styles.shareIcon} width="15px" height="15px" />

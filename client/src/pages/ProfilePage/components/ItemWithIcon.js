@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./IteamWithIcon.module.css";
 
-function ItemWithIcon({ IconSVG, text, ...props }) {
+function ItemWithIcon({ IconSVG, text, className = " ", ...props }) {
+  const classNames = [styles.infoBox, className].join(" ");
   return (
-    <div className={styles.infoBox} {...props}>
+    <div className={classNames} {...props}>
       <IconSVG className={styles.icon} />
       <span>{text}</span>
     </div>
