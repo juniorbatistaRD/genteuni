@@ -1,6 +1,6 @@
 Parse.Cloud.beforeSave("Message", async (req, res) => {
   //make fromUser forced to be currentUser
-  if (!req.original) {
+  if (!req.master) {
     req.object.set("createdBy", req.user);
   }
 
@@ -10,4 +10,10 @@ Parse.Cloud.beforeSave("Message", async (req, res) => {
   ) {
     throw "Demasiado Largo o esta vacio";
   }
+
+  //data for aftersave
+  req.context = {
+    conversation: req.object.get("conversation"),
+    message: req.object.get("message"),
+  };
 });

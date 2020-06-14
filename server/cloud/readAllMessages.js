@@ -17,8 +17,7 @@ Parse.Cloud.define("readAllMessages", async (req) => {
   // query.notContainedIn("createdBy", [req.user]);
 
   query.each(function (obj) {
-    console.log(obj);
     obj.set("wasSeen", true);
-    obj.save();
+    obj.save(null, { useMasterKey: true });
   });
 });

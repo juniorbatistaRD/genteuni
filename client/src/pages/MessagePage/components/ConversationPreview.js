@@ -6,6 +6,7 @@ import Text from "../../../components/common/Text";
 import styles from "./ConversationPreview.module.css";
 import { useNavigate } from "react-router-dom";
 import { getLastUnreadMessage } from "../../../data/queryMessages";
+import FlexColumn from "../../../components/common/FlexColumn";
 
 const ConversationPreview = ({ conversation }) => {
   const { currentUser } = useContext(AuthContext);
@@ -49,10 +50,14 @@ const ConversationPreview = ({ conversation }) => {
       {!isLoading && (
         <>
           <Avatar image={fromUser.attributes.profilePicture?.url()} />
-          <Text
-            text={fromUser.attributes.username}
-            style={{ fontWeight: messagesAmount > 0 ? "bold" : 100 }}
-          />
+          <FlexColumn>
+            <Text
+              text={fromUser.attributes.username}
+              style={{ fontWeight: messagesAmount > 0 ? "bold" : 100 }}
+            />
+            <Text fontSize="12px" text={conversation.attributes.lastMessage} />
+          </FlexColumn>
+
           {messagesAmount > 0 && (
             <p className={styles.circle}>{messagesAmount}</p>
           )}

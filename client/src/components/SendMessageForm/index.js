@@ -5,7 +5,6 @@ import Button from "../common/Button";
 import Parse from "parse";
 
 const SendMessageForm = ({ toUser }) => {
-  console.log(toUser);
   return (
     <div>
       <Formik
@@ -18,7 +17,11 @@ const SendMessageForm = ({ toUser }) => {
         }
       >
         <Form>
-          <TextArea name="message" />
+          <TextArea
+            name="message"
+            placeholder="Escribre tu mensaje aqui"
+            width="-webkit-fill-available"
+          />
           <Button type="submit">Enviar</Button>
         </Form>
       </Formik>

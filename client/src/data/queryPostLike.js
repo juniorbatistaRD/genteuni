@@ -5,7 +5,7 @@ const query = new Parse.Query(PostLike);
 
 export const saveLike = async (fromUser, post) => {
   const postLike = new PostLike();
-  postLike.set("fromUser", fromUser);
+  // postLike.set("fromUser", fromUser);
   postLike.set("post", post);
   return await postLike.save();
 };

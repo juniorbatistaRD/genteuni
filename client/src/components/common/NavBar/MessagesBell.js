@@ -21,8 +21,10 @@ function MessagesBell() {
       setMessagesNumber(amount);
 
       //receive new messages
-      subscrition.on("create", (test) => {
-        setMessagesNumber((prev) => prev + 1);
+      subscrition.on("create", (message) => {
+        if (message.attributes.createdBy.id !== currentUser.id) {
+          setMessagesNumber((prev) => prev + 1);
+        }
       });
       //if messages was read
       subscrition.on("leave", () => setMessagesNumber((prev) => prev - 1));

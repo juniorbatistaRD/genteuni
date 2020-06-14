@@ -6,7 +6,9 @@ import SendMessageForm from "../../../components/SendMessageForm";
 const MessageButton = ({ toUser }) => {
   return (
     <Button
-      onClick={() => Swal(<SendMessageForm toUser={toUser} />)}
+      onClick={() =>
+        Swal({ content: <SendMessageForm toUser={toUser} />, buttons: false })
+      }
       typeStyle="secondary"
       padding="5px 15px"
       margin="0px 10px 0px 0px"

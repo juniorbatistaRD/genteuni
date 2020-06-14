@@ -6,9 +6,11 @@ import Moment from "react-moment";
 import "moment/locale/es";
 import Title from "../common/Title";
 import { motion } from "framer-motion";
+import Rater from "../../components/formikFields/Rater";
 
-const Comment = ({ text, user, date, margin }) => {
+const Review = ({ text, user, date, margin, rating }) => {
   const createdAt = new Date(date);
+  console.log(user.attributes);
   return (
     <motion.div
       animate={{ y: 0 }}
@@ -19,6 +21,7 @@ const Comment = ({ text, user, date, margin }) => {
       <Avatar image={user.attributes.profilePicture?.url()} link={user.id} />
       <div className={styles.dataContainer}>
         <Title text={user.attributes.username} fontSize="16px" />
+        <Rater interactive={false} value={rating} size="20px" />
         <Text text={text} />
         <Moment className={styles.date} fromNow locale="es">
           {createdAt}
@@ -28,8 +31,8 @@ const Comment = ({ text, user, date, margin }) => {
   );
 };
 
-Comment.defaultProps = {
+Review.defaultProps = {
   margin: "0px",
 };
 
-export default Comment;
+export default Review;

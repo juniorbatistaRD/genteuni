@@ -13,7 +13,7 @@ export const getUserConversationsWithPagination = async ({
   query.equalTo("members", user);
   query.skip(startFrom);
   query.includeAll();
-  query.descending("createdAt");
+  query.descending("updatedAt");
   query.limit(perPage);
   query.withCount();
 

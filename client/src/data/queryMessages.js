@@ -70,11 +70,12 @@ export const getUnreadNumberOfMessages = async (user) => {
   queryConversation.equalTo("members", user);
   const conversations = await queryConversation.find();
 
-  query.include("conversation", conversations);
-  query.notEqualTo("createdBy", user);
+  query.containedIn("conversation", conversations);
   query.doesNotExist("wasSeen");
+  query.notEqualTo("createdBy", user);
 
   const amount = await query.count();
+
   const subscrition = await client.subscribe(query);
 
   return { amount, subscrition };
