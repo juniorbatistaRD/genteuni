@@ -7,6 +7,7 @@ const FlexRow = ({
   alignItems,
   justifyContent,
   className,
+  width,
   ...props
 }) => {
   const classNames = [styles.flexRow, className].join(" ");
@@ -15,7 +16,7 @@ const FlexRow = ({
     <div
       className={classNames}
       {...props}
-      style={{ margin, alignItems, justifyContent }}
+      style={{ margin, alignItems, justifyContent, width }}
     >
       {children}
     </div>
@@ -27,6 +28,7 @@ FlexRow.defaultProps = {
   margin: null,
   alignItems: null,
   justifyContent: null,
+  width: null,
 };
 
 export default FlexRow;

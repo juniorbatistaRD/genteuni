@@ -24,6 +24,10 @@ function SettingPage() {
         <Route path="/password" element={<PasswordSettings />} />
         <Route path="/facebook" element={<FacebookSettings />} />
         <Route path="/school" element={<SchoolSettings />} />
+        <Route
+          path="/school/search/:searchQuery"
+          element={<SchoolSettings />}
+        />
         <Route path="/school/add" element={<AddSchool />} />
         <Route path="/cover" element={<CoverSettings />} />
         <Route path="/notification" element={<NotificationSettings />} />

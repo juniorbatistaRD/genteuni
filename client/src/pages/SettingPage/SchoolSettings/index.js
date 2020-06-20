@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { Formik, Form } from "formik";
 import { motion } from "framer-motion";
@@ -13,12 +13,13 @@ import useSearchSchool from "./useSearchSchools";
 import Spinner from "../../../components/common/Spinner";
 import { ReactComponent as MoonIlustration } from "../../../assets/images/moon.svg";
 import { ReactComponent as EmptyIlustration } from "../../../assets/images/empty.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import FlexRow from "../../../components/common/FlexRow";
 import GoBackButton from "../../../components/GoBackButton";
 
 function SchoolSettings() {
   const [touched, setTouched] = useState(false);
+  const { searchQuery } = useParams();
   const navigate = useNavigate();
   const {
     count,
@@ -30,6 +31,12 @@ function SchoolSettings() {
     reset,
     loadMoreItems,
   } = useSearchSchool();
+
+  useEffect(() => {
+    if (searchQuery) {
+      setQuery(() => searchQuery);
+    }
+  }, [searchQuery, setQuery]);
 
   const onSubmit = (values) => {
     //avoid rerendering and refetching if query is the same
@@ -52,7 +59,7 @@ function SchoolSettings() {
       </FlexRow>
       <Formik
         initialValues={{
-          search: "",
+          search: searchQuery ? searchQuery : "",
         }}
         onSubmit={onSubmit}
         validationSchema={Yup.object({
@@ -96,7 +103,9 @@ function SchoolSettings() {
             {!(startFrom + 10 < count) && (
               <div className={styles.addSchoolCallToAction}>
                 No encontraste tu escuela? Agregala!
-                <Button onClick={() => navigate("add")}>Agregar Escuela</Button>
+                <Button onClick={() => navigate("/app/settings/school/add")}>
+                  Agregar Escuela
+                </Button>
               </div>
             )}
           </InfiniteScroll>
@@ -116,7 +125,9 @@ function SchoolSettings() {
                 <Title text="No pudimos encontrar nada :(" fontSize="16px" />
                 <Title text="Intenta con otras palabras" fontSize="16px" />
                 <EmptyIlustration width="200px" height="200px" />
-                <Button onClick={() => navigate("add")}>Agregar Escuela</Button>
+                <Button onClick={() => navigate("/app/settings/school/add")}>
+                  Agregar Escuela
+                </Button>
               </div>
             ) : (
               <div className={styles.initialBox}>

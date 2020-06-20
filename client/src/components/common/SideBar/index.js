@@ -74,7 +74,11 @@ function SideBar({ setMenuOpen, className, ...props }) {
           />
           <span>Profesores</span>
         </li>
-        <li>
+        <li
+          onClick={() => {
+            goTo("/app/schools");
+          }}
+        >
           <img alt="option" className={styles["menu-icon"]} src={schoolIcon} />
           <span>Escuelas</span>
         </li>

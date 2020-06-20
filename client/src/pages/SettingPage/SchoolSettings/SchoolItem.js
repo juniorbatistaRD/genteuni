@@ -3,9 +3,12 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import Title from "../../../components/common/Title";
 import styles from "./SchoolItem.module.css";
 import Button from "../../../components/common/Button";
+import FlexColumn from "../../../components/common/FlexColumn";
+import { useNavigate } from "react-router-dom";
 
 const SchoolItem = ({ school }) => {
   const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const updateSchool = () => {
     currentUser.set("school", school);
@@ -36,9 +39,21 @@ const SchoolItem = ({ school }) => {
           fontSize="12px"
         />
       </div>
-      <Button className={styles.addButton} onClick={updateSchool}>
-        Elegir Escuela
-      </Button>
+      <FlexColumn>
+        <Button
+          className={styles.addButton}
+          onClick={() => navigate(`/app/school/${school.id}/`)}
+        >
+          Mas Info
+        </Button>
+        <Button
+          className={styles.addButton}
+          onClick={updateSchool}
+          typeStyle="secondary"
+        >
+          Elegir Escuela
+        </Button>
+      </FlexColumn>
     </div>
   );
 };

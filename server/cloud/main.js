@@ -8,6 +8,7 @@ require("./sendMessageToUser");
 
 //school
 require("./getSchoolAverageRating");
+require("./school/getSchoolRankingList");
 
 //validations
 require("./validations");

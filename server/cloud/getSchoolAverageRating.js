@@ -4,8 +4,6 @@ Parse.Cloud.define("getSchoolAverageRating", async (req) => {
   const querySchool = new Parse.Query("School");
   const school = await querySchool.get(req.params.schoolId);
 
-  console.log(school);
-
   //get total average for school
   const pipeline = {
     match: { school: school.id },
