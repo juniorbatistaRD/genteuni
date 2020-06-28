@@ -11,13 +11,6 @@ export const saveSchoolRating = async ({ school, description, rating }) => {
   return await schoolReview.save();
 };
 
-export const getAverageRating = async () => {
-  const pipeline = [{ group: { objectId: null, total: { $sum: "$rating" } } }];
-  const query = new Parse.Query(SchoolReview);
-
-  return await query.aggregate(pipeline);
-};
-
 export const getReviewsWithPagination = async ({
   startFrom,
   perPage,

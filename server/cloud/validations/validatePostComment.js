@@ -7,6 +7,13 @@ Parse.Cloud.beforeSave("PostComment", async (req, res) => {
   //make fromUser forced to be currentUser
   comment.set("createdBy", req.user);
 
+  //acl
+  const acl = new Parse.ACL();
+  acl.setPublicReadAccess(true);
+  acl.setWriteAccess(req.user.id, true);
+
+  comment.setACL(acl);
+
   //for notification
   req.context = {
     triggeredBy: req.user,

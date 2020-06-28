@@ -1,0 +1,23 @@
+.box {
+  background-color: #fff;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: -1px 4px 5px 4px rgba(125, 125, 125, 0.34);
+}
+
+.container {
+  width: 100%;
+}
+
+.avg {
+  color: grey;
+  font-size: 48px;
+}
+
+.text {
+  font-size: 14px;
+  color: grey;
+}

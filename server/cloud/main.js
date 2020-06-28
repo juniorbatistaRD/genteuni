@@ -10,6 +10,9 @@ require("./sendMessageToUser");
 require("./getSchoolAverageRating");
 require("./school/getSchoolRankingList");
 
+//teachers
+require("./teachers");
+
 //validations
 require("./validations");
 

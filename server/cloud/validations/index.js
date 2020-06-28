@@ -10,3 +10,4 @@ require("./validatePostComment");
 require("./validatePostLike");
 require("./validateMessage");
 require("./validateSchoolReview");
+require("./validateTeacherReview");

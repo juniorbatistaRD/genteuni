@@ -1,18 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import FlexColumn from "../../components/common/FlexColumn";
 import FlexRow from "../../components/common/FlexRow";
 import Title from "../../components/common/Title";
 import GoBackButton from "../../components/GoBackButton";
 import { getTeacherById } from "../../data/queryTeachers";
-import Text from "../../components/common/Text";
 import { ReactComponent as SchoolIcon } from "../../assets/icons/school.svg";
 import { ReactComponent as FlaskIcon } from "../../assets/icons/flask.svg";
+import ReviewAvgTeacher from "./components/ReviewAvgTeacher";
+import ReviewTeacherForm from "./components/ReviewTeacherForm";
+import { AuthContext } from "../../contexts/AuthContext";
+import Button from "../../components/common/Button";
+import useInfiniteScrolling from "../../hooks/useInfinteScrolling";
+import { getTeacherReviewsWithPagination } from "../../data/queryTeachersReviews";
+import InfiniteScroll from "react-infinite-scroller";
+import Review from "../../components/Review";
 
 const ShowTeacher = () => {
   const { id } = useParams();
   const [teacher, setTeacher] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  const { currentUser } = useContext(AuthContext);
+
+  const {
+    items,
+    startFrom,
+    count,
+    reloadData,
+    nextPage,
+  } = useInfiniteScrolling({
+    query: getTeacherReviewsWithPagination,
+    queryData: teacher,
+    perPage: 10,
+  });
 
   useEffect(() => {
     const getData = async () => {
@@ -54,6 +75,28 @@ const ShowTeacher = () => {
                 typeStyle="secondary"
               />
             </FlexRow>
+            <ReviewAvgTeacher teacher={teacher} />
+            {currentUser ? (
+              <ReviewTeacherForm teacher={teacher} reloadData={reloadData} />
+            ) : (
+              <FlexRow>
+                <Button>Inicia Sesion para dejar tu opinion</Button>
+              </FlexRow>
+            )}
+
+            <InfiniteScroll
+              hasMore={startFrom < count}
+              loadMore={nextPage}
+              loader={"Cargando..."}
+            >
+              {items.map((item) => (
+                <Review
+                  date={item.attributes.createdAt}
+                  rating={item.attributes.rating}
+                  user={item.attributes.createdBy}
+                />
+              ))}
+            </InfiniteScroll>
           </FlexColumn>
         </>
       )}

@@ -1,14 +1,22 @@
-Parse.Cloud.beforeSave("SchoolReview", async (req, res) => {
-  const query = new Parse.Query("SchoolReview");
+const { User } = require("parse");
+
+Parse.Cloud.beforeSave("TeacherReview", async (req, res) => {
+  const query = new Parse.Query("TeacherReview");
   const review = req.object;
 
-  //make fromUser forced to be currentUser
-  req.object.set("createdBy", req.user);
+  console.log(Parse.User.current());
 
   //make sure review doesnt exist yet
   query.equalTo("createdBy", req.user);
-  query.equalTo("school", review.get("school"));
+  query.equalTo("teacher", review.get("teacher"));
   const result = await query.count();
+
+  if (result > 0) {
+    throw "Ya sigues haz publicado un review para esta escuela";
+  }
+
+  //make fromUser forced to be currentUser
+  review.set("createdBy", req.user);
 
   //acl
   const acl = new Parse.ACL();
@@ -17,10 +25,7 @@ Parse.Cloud.beforeSave("SchoolReview", async (req, res) => {
 
   review.setACL(acl);
 
-  if (result > 0) {
-    throw "Ya sigues haz publicado un review para esta escuela";
-  }
-
+  //data validations
   if (
     review.get("rating") > 5 ||
     review.get("rating") < 1 ||

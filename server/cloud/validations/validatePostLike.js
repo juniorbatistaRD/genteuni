@@ -36,6 +36,13 @@ Parse.Cloud.beforeSave("PostLike", async (req, res) => {
     throw "Ya sigues a este usuario";
   }
 
+  //acl
+  const acl = new Parse.ACL();
+  acl.setPublicReadAccess(true);
+  acl.setWriteAccess(req.user.id, true);
+
+  postLike.setACL(acl);
+
   //for notification
   req.context = {
     triggeredBy: req.user,

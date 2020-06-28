@@ -17,6 +17,13 @@ Parse.Cloud.beforeSave("Post", async (req, res) => {
     throw "Los articulos deben tener entre 1 a 150 bloques(texto, imagenes etc)";
   }
 
+  //acl
+  const acl = new Parse.ACL();
+  acl.setPublicReadAccess(true);
+  acl.setWriteAccess(req.user.id, true);
+
+  post.setACL(acl);
+
   //add school
   if (post.get("postOnSchool")) {
     post.set("relatedToSchool", req.user.attributes.school);
