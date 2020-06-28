@@ -15,6 +15,7 @@ import Messagepage from "./pages/MessagePage";
 import ConversationPage from "./pages/ConversationPage";
 import SchoolPage from "./pages/SchoolPage";
 import SchoolsPages from "./pages/SchoolsPage";
+import ShowTeacher from "./pages/TeachersPage/ShowTeacher";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="/message" element={<Messagepage />} />
             <Route path="/school/:id/*" element={<SchoolPage />} />
             <Route path="/schools" element={<SchoolsPages />} />
+            <Route path="/teachers/:id" element={<ShowTeacher />} />
           </Route>
           <Route path="/chat/:id" element={<ConversationPage />} />
         </Routes>

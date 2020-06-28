@@ -50,7 +50,7 @@ function CoverSettings() {
               type: "success",
               title: "Buena eleccion!",
             }).then(() => {
-              navigate("/app/profile");
+              navigate("/app/me/");
             });
           });
         }}

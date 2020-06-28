@@ -7,13 +7,20 @@ function SelectFieldFormik({
   placeholder,
   isLoading,
   className,
+  border,
   ...props
 }) {
   const [field] = useField(props);
   const classNames = [styles.select, className].join(" ");
 
   return (
-    <select {...field} {...props} className={classNames} disabled={isLoading}>
+    <select
+      {...field}
+      {...props}
+      className={classNames}
+      disabled={isLoading}
+      style={{ border, ...props.styles }}
+    >
       {placeholder && <option value="">{placeholder}</option>}
 
       {options &&
@@ -61,6 +68,7 @@ function SelectField(props) {
 
 SelectFieldFormik.defaultProps = {
   className: " ",
+  border: "none",
 };
 
 export default SelectField;

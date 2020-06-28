@@ -19,6 +19,11 @@ const SchoolRating = ({ school, avg, number }) => {
               className={styles.link}
             >
               <Title text={school.schoolInfo.attributes.name} />
+              <Title
+                fontSize="16px"
+                typeStyle="secondary"
+                text={school.schoolInfo.attributes.country.attributes.name}
+              />
             </Link>
           </FlexRow>
           <FlexRow>

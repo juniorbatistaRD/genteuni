@@ -7,7 +7,6 @@ import Rater from "../../../components/formikFields/Rater";
 const ReviewAvg = ({ school }) => {
   const [avg, setAvg] = useState(0);
   const [reviews, setReviews] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -17,8 +16,6 @@ const ReviewAvg = ({ school }) => {
 
       setReviews(result.totalReviews);
       setAvg(result.totalAverage);
-
-      setIsLoading(false);
     };
 
     getData().catch((e) => console.log(e, "error"));
@@ -26,13 +23,11 @@ const ReviewAvg = ({ school }) => {
 
   return (
     <FlexColumn className={styles.container}>
-      {!isLoading && reviews > 0 && (
-        <FlexColumn className={styles.box}>
-          <p className={styles.avg}>{avg}</p>
-          <Rater interactive={false} value={avg} />
-          <p className={styles.text}>{reviews} reviews </p>
-        </FlexColumn>
-      )}
+      <FlexColumn className={styles.box}>
+        <p className={styles.avg}>{avg}</p>
+        <Rater interactive={false} value={avg} />
+        <p className={styles.text}>{reviews} reviews </p>
+      </FlexColumn>
     </FlexColumn>
   );
 };

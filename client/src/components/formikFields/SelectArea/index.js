@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { SelectField } from "../../components/formikFields";
+import { SelectField } from "../index";
 import Parse from "parse";
 
-function SelectCountry(props) {
-  const [countries, setCountries] = useState(null);
+function SelectArea(props) {
+  const [areas, setAreas] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const getdata = async () => {
     setIsLoading(true);
     const list = [];
-    const queryCountries = new Parse.Query(Parse.Object.extend("Country"));
-    const data = await queryCountries.find();
-    await data.forEach((country) => {
+    const queryAreas = new Parse.Query(Parse.Object.extend("Area"));
+    const data = await queryAreas.find();
+    await data.forEach((area) => {
       list.push({
-        name: country.attributes.name,
-        value: country.id,
+        name: area.attributes.name,
+        value: area.id,
       });
     });
     return list;
@@ -23,7 +23,7 @@ function SelectCountry(props) {
   useEffect(() => {
     getdata()
       .then((data) => {
-        setCountries(data);
+        setAreas(data);
       })
       .finally(() => setIsLoading(false));
   }, []);
@@ -31,7 +31,7 @@ function SelectCountry(props) {
   return (
     <>
       <SelectField
-        options={countries}
+        options={areas}
         {...props}
         isLoading={isLoading}
       ></SelectField>
@@ -39,4 +39,4 @@ function SelectCountry(props) {
   );
 }
 
-export default SelectCountry;
+export default SelectArea;

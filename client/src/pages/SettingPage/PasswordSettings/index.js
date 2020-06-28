@@ -15,7 +15,7 @@ function PasswordSettings() {
 
   const resetPassword = () => {
     setIsLoading(true);
-    Parse.User.requestPasswordReset(currentUser.attributes.username)
+    Parse.User.requestPasswordReset(currentUser.attributes.email)
       .then(() => {
         showAlert({
           type: "success",

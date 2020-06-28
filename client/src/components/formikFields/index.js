@@ -6,3 +6,4 @@ export { default as SelectField } from "./SelectField";
 export { default as ErrorMessage } from "./ErrorMessage";
 export { default as RadioField } from "./RadioField";
 export { default as Rater } from "./Rater";
+export { default as SelectArea } from "./SelectArea";

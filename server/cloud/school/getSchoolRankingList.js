@@ -18,7 +18,6 @@ Parse.Cloud.define("getSchoolRankingList", async (req) => {
   const queryTotalReviews = new Parse.Query(SchoolReview);
   const totalReviewsResult = await queryTotalReviews.aggregate(pipeline);
 
-  console.log(totalReviewsResult, "yay");
   //sort by avergare ratings
   const sortByRatings = (a, b) => b.avg - a.avg;
   totalReviewsResult.sort(sortByRatings);
@@ -27,6 +26,7 @@ Parse.Cloud.define("getSchoolRankingList", async (req) => {
   const schoolsWithInfo = await Promise.all(
     totalReviewsResult.map(async (school) => {
       const querySchool = new Parse.Query(School);
+      querySchool.include("country");
       const schoolInfo = await querySchool.get(school.objectId);
       return { schoolInfo, ...school };
     })

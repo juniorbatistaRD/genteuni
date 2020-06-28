@@ -12,7 +12,7 @@ const SchoolItem = ({ school }) => {
 
   const updateSchool = () => {
     currentUser.set("school", school);
-    currentUser.save();
+    currentUser.save().then(() => navigate("/app/me/"));
   };
 
   return (

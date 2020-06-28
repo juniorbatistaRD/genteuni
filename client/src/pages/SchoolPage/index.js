@@ -12,6 +12,8 @@ import FlexRow from "../../components/common/FlexRow";
 import { ReactComponent as StudentIcon } from "../../assets/icons/student.svg";
 import { ReactComponent as ChainIcon } from "../../assets/icons/chain.svg";
 import ReviewsSection from "./ReviewsSection";
+import MemebersSection from "./MembersSection";
+import TeachersSection from "./TeachersSection";
 
 const SchoolPage = () => {
   const { id } = useParams();
@@ -89,6 +91,14 @@ const SchoolPage = () => {
             <Route
               path="reviews"
               element={<ReviewsSection school={school} />}
+            />
+            <Route
+              path="members"
+              element={<MemebersSection school={school} />}
+            />
+            <Route
+              path="teachers"
+              element={<TeachersSection school={school} />}
             />
           </Routes>
         </FlexColumn>

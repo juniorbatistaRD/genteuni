@@ -24,8 +24,25 @@ export const saveSchool = async ({ name, country, isHighSchool, website }) => {
 
 export const getSchoolById = async (id) => {
   const query = new Parse.Query(School);
-
+  query.include("country");
   return await query.get(id);
+};
+
+export const getSchoolMembersWithPagination = async ({
+  startFrom,
+  queryData,
+  perPage,
+}) => {
+  const query = new Parse.Query(Parse.User);
+  query.equalTo("school", queryData);
+  query.skip(startFrom);
+  query.include("createdBy");
+  query.descending("createdAt");
+  query.limit(perPage);
+  query.withCount();
+  const result = await query.find();
+
+  return result;
 };
 
 export default query;

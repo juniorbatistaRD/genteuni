@@ -8,19 +8,24 @@ import InfiniteScroll from "react-infinite-scroller";
 import Review from "../../../components/Review";
 
 const ReviewsSection = ({ school }) => {
-  const { startFrom, isLoading, items, count, nextPage } = useInfiniteScrolling(
-    {
-      query: getReviewsWithPagination,
-      queryData: school,
-      perPage: 10,
-    }
-  );
+  const {
+    startFrom,
+    isLoading,
+    items,
+    count,
+    nextPage,
+    reloadData,
+  } = useInfiniteScrolling({
+    query: getReviewsWithPagination,
+    queryData: school,
+    perPage: 10,
+  });
 
   return (
     <div>
       <Title text="Reviews" margin="10px" />
       <ReviewAvg school={school} />
-      <ReviewForm school={school} />
+      <ReviewForm school={school} reloadData={reloadData} />
       {!isLoading && (
         <InfiniteScroll
           loader={"Cargando"}
@@ -29,6 +34,7 @@ const ReviewsSection = ({ school }) => {
         >
           {items.map((item) => (
             <Review
+              margin="10px"
               key={item.id}
               rating={item.attributes.rating}
               date={item.attributes.createdAt}

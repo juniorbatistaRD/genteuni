@@ -5,6 +5,7 @@ import {
   TextField,
   ErrorMessage,
   RadioField,
+  CheckBox,
 } from "../../../components/formikFields";
 import Title from "../../../components/common/Title";
 import styles from "./index.module.css";
@@ -35,6 +36,7 @@ const AddSchool = () => {
           typeOfSchool: "college",
           test: "",
           country: "",
+          addSchoolToProfile: true,
         }}
         validationSchema={yup.object({
           name: yup
@@ -45,30 +47,32 @@ const AddSchool = () => {
           website: yup.string().trim().url(),
           country: yup.string().required("Elige un pais"),
         })}
-        onSubmit={(values) =>
-          saveSchool({
-            name: values.name,
-            website: values.website,
-            country: values.country,
-            isHighSchool: values.typeOfSchool === "highSchool" ? true : false,
-          })
-            .then((school) => {
+        onSubmit={async (values) => {
+          try {
+            const school = await saveSchool({
+              name: values.name,
+              website: values.website,
+              country: values.country,
+              isHighSchool: values.typeOfSchool === "highSchool" ? true : false,
+            });
+
+            if (values.addSchoolToProfile) {
               currentUser.set("school", school);
-              currentUser.save().then(() =>
-                showAlert({
-                  type: "success",
-                  text: "Escuela guardada!",
-                }).then(() => navigate("/app/profile"))
-              );
-            })
-            .catch((err) => {
-              showAlert({
-                type: "error",
-                title: "Uh no!",
-                text: `${err}`,
-              });
-            })
-        }
+              currentUser.save();
+            }
+
+            showAlert({
+              type: "success",
+              text: "Escuela guardada!",
+            }).then(() => navigate("/app/school/" + school.id));
+          } catch (err) {
+            showAlert({
+              type: "error",
+              title: "Uh no!",
+              text: `${err}`,
+            });
+          }
+        }}
       >
         {(props) => (
           <Form className={styles.form}>
@@ -105,6 +109,14 @@ const AddSchool = () => {
                 Secundaria
               </RadioField>
             </div>
+            <FlexRow>
+              <Title
+                text="Agregar atu perfil como tu escuela: "
+                typeStyle="secondary"
+                fontSize="16px"
+              />
+              <CheckBox name="addSchoolToProfile" />
+            </FlexRow>
 
             <Button type="submit" loading={props.isSubmitting}>
               Agregar Escuela

@@ -10,7 +10,7 @@ import Rater from "../../components/formikFields/Rater";
 
 const Review = ({ text, user, date, margin, rating }) => {
   const createdAt = new Date(date);
-  console.log(user.attributes);
+
   return (
     <motion.div
       animate={{ y: 0 }}
