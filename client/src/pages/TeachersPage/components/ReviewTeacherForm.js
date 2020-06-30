@@ -31,9 +31,10 @@ const ReviewTeacherForm = ({ teacher, reloadData }) => {
             .max(200, "Muy Largo")
             .required("Olvidaste dar tu opinion"),
         })}
-        onSubmit={async (values) => {
+        onSubmit={async (values, actions) => {
           try {
             await saveTeacherRating(values);
+            actions.resetForm();
             if (reloadData) reloadData();
           } catch (err) {
             showAlert({ type: "error", text: `${err.message}` });

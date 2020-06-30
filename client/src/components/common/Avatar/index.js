@@ -18,7 +18,8 @@ function Avatar({ image, width, link, ...props }) {
       <img
         style={{
           width,
-          height: width
+          height: width,
+          cursor: link ? "pointer" : "auto",
         }}
         src={image ? image : defaultImage}
         className={classNames}
@@ -32,7 +33,7 @@ function Avatar({ image, width, link, ...props }) {
 Avatar.defaultProps = {
   image: defaultImage,
   width: "45px",
-  className: " "
+  className: " ",
 };
 
 export default Avatar;

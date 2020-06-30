@@ -46,13 +46,15 @@ const SchoolItem = ({ school }) => {
         >
           Mas Info
         </Button>
-        <Button
-          className={styles.addButton}
-          onClick={updateSchool}
-          typeStyle="secondary"
-        >
-          Elegir Escuela
-        </Button>
+        {currentUser && (
+          <Button
+            className={styles.addButton}
+            onClick={updateSchool}
+            typeStyle="secondary"
+          >
+            Elegir Escuela
+          </Button>
+        )}
       </FlexColumn>
     </div>
   );

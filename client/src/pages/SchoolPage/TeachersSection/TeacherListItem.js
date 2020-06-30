@@ -2,18 +2,14 @@ import React from "react";
 import Title from "../../../components/common/Title";
 import styles from "./TeacherListItem.module.css";
 import Text from "../../../components/common/Text";
-import { useNavigate } from "react-router-dom";
-import { schoolBook } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { Link } from "react-router-dom";
 
 const TeacherListItem = ({ name, area, id }) => {
-  const navigate = useNavigate();
-
   return (
-    <div
-      className={styles.container}
-      onClick={() => navigate("/app/teachers/" + id)}
-    >
-      <Title text={name} />
+    <div className={styles.container}>
+      <Link to={"/app/teachers/" + id} style={{ textDecoration: "none" }}>
+        <Title text={name} />
+      </Link>
       <Text text={area} />
     </div>
   );

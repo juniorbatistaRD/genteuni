@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { Formik, Form } from "formik";
 import { motion } from "framer-motion";
@@ -16,6 +16,7 @@ import { ReactComponent as EmptyIlustration } from "../../../assets/images/empty
 import { useNavigate, useParams } from "react-router-dom";
 import FlexRow from "../../../components/common/FlexRow";
 import GoBackButton from "../../../components/GoBackButton";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 function SchoolSettings() {
   const [touched, setTouched] = useState(false);
@@ -31,6 +32,7 @@ function SchoolSettings() {
     reset,
     loadMoreItems,
   } = useSearchSchool();
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     if (searchQuery) {
@@ -103,9 +105,15 @@ function SchoolSettings() {
             {!(startFrom + 10 < count) && (
               <div className={styles.addSchoolCallToAction}>
                 No encontraste tu escuela? Agregala!
-                <Button onClick={() => navigate("/app/settings/school/add")}>
-                  Agregar Escuela
-                </Button>
+                {currentUser ? (
+                  <Button onClick={() => navigate("/app/settings/school/add")}>
+                    Agregar Escuela
+                  </Button>
+                ) : (
+                  <Button onClick={() => navigate("/")}>
+                    Inicia sesion para agregar tu escuela
+                  </Button>
+                )}
               </div>
             )}
           </InfiniteScroll>
@@ -125,9 +133,15 @@ function SchoolSettings() {
                 <Title text="No pudimos encontrar nada :(" fontSize="16px" />
                 <Title text="Intenta con otras palabras" fontSize="16px" />
                 <EmptyIlustration width="200px" height="200px" />
-                <Button onClick={() => navigate("/app/settings/school/add")}>
-                  Agregar Escuela
-                </Button>
+                {currentUser ? (
+                  <Button onClick={() => navigate("/app/settings/school/add")}>
+                    Agregar Escuela
+                  </Button>
+                ) : (
+                  <Button onClick={() => navigate("/")}>
+                    Inicia sesion para agregar tu escuela
+                  </Button>
+                )}
               </div>
             ) : (
               <div className={styles.initialBox}>

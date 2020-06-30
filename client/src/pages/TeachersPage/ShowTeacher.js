@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import FlexColumn from "../../components/common/FlexColumn";
 import FlexRow from "../../components/common/FlexRow";
 import Title from "../../components/common/Title";
@@ -20,6 +20,7 @@ const ShowTeacher = () => {
   const { id } = useParams();
   const [teacher, setTeacher] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   const { currentUser } = useContext(AuthContext);
 
@@ -44,9 +45,8 @@ const ShowTeacher = () => {
     };
 
     getData();
-  }, []);
+  }, [id]);
 
-  !isLoading && console.log(teacher.attributes.area);
   return (
     <FlexColumn>
       {!isLoading && (
@@ -61,11 +61,16 @@ const ShowTeacher = () => {
           <FlexColumn>
             <FlexRow>
               <SchoolIcon width="25px" height="25px" />
-              <Title
-                margin="0px 0px 0px 10px"
-                text={teacher.attributes.school.attributes.name}
-                typeStyle="secondary"
-              />
+              <Link
+                to={`/app/school/${teacher.attributes.school.id}/`}
+                style={{ textDecoration: "none" }}
+              >
+                <Title
+                  margin="0px 0px 0px 10px"
+                  text={teacher.attributes.school.attributes.name}
+                  typeStyle="secondary"
+                />
+              </Link>
             </FlexRow>
             <FlexRow>
               <FlaskIcon width="20px" height="20px" />
@@ -80,7 +85,9 @@ const ShowTeacher = () => {
               <ReviewTeacherForm teacher={teacher} reloadData={reloadData} />
             ) : (
               <FlexRow>
-                <Button>Inicia Sesion para dejar tu opinion</Button>
+                <Button onClick={() => navigate("/")}>
+                  Inicia Sesion para dejar tu opinion
+                </Button>
               </FlexRow>
             )}
 
