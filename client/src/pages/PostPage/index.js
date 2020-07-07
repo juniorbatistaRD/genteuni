@@ -8,12 +8,11 @@ import {
   CheckBox,
   ErrorMessage,
 } from "../../components/formikFields";
-import EditorJs from "react-editor-js";
-import { EDITOR_JS_TOOLS } from "./tool";
 import { Formik, Form } from "formik";
 import { savePost } from "../../data/queryPosts";
 import showAlert from "../../helpers/showAlert/showAlert";
 import * as yup from "yup";
+import RichTextEditor from "../../components/formikFields/RichTextEditor";
 
 function PostPage() {
   const { currentUser } = useContext(AuthContext);
@@ -76,9 +75,9 @@ function PostPage() {
               }}
             />
             <ErrorMessage name="title" />
-            <EditorJs
-              onChange={async (e) => props.setFieldValue("content", e.saver)}
-              tools={EDITOR_JS_TOOLS}
+            <RichTextEditor
+              name="content"
+              setFieldValue={props.setFieldValue}
             />
             <ErrorMessage name="content" />
 

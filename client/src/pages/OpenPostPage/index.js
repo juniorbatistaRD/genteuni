@@ -114,7 +114,9 @@ function OpenPostPage() {
             </FlexRow>
           </FlexColumn>
           <FlexColumn className={styles.content}>
-            <RenderHTML json={post.attributes} />
+            <article>
+              <RenderHTML json={post.attributes} />
+            </article>
           </FlexColumn>
           <FlexRow className={styles.actionButtons}>
             {currentUser && <LikePostButton post={post} />}

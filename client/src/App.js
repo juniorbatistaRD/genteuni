@@ -16,6 +16,7 @@ import ConversationPage from "./pages/ConversationPage";
 import SchoolPage from "./pages/SchoolPage";
 import SchoolsPages from "./pages/SchoolsPage";
 import ShowTeacher from "./pages/TeachersPage/ShowTeacher";
+import CreateQuestion from "./pages/QuestionPage/CreateQuestion";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route path="/school/:id/*" element={<SchoolPage />} />
             <Route path="/schools" element={<SchoolsPages />} />
             <Route path="/teachers/:id" element={<ShowTeacher />} />
+            <Route path="/question/create/" element={<CreateQuestion />} />
           </Route>
           <Route path="/chat/:id" element={<ConversationPage />} />
         </Routes>
