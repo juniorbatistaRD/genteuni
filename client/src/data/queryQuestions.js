@@ -19,4 +19,23 @@ export const saveQuestion = async ({ title, content, area, postOnSchool }) => {
   return result;
 };
 
+export const getQuestionById = async (id) => {
+  const query = new Parse.Query(Question);
+  query.include("createdBy");
+  query.include("answer");
+
+  const result = await query.get(id);
+
+  return result;
+};
+
+export const pickAnswer = async ({ answer, question }) => {
+  const getQuestion = new Parse.Query(Question);
+
+  const fetchedQuestion = await getQuestion.get(question.id);
+  fetchedQuestion.set("answer", answer);
+
+  await fetchedQuestion.save();
+};
+
 export default query;

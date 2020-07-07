@@ -24,3 +24,8 @@
   font-size: 12px;
   color: #696969;
 }
+
+.text {
+  color: #696969;
+  word-break: break-all;
+}

@@ -12,3 +12,5 @@ require("./validateMessage");
 require("./validateSchoolReview");
 require("./validateTeacherReview");
 require("./validateTeacher");
+require("./validateQuestion");
+require("./validateAnswer");

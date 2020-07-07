@@ -34,7 +34,7 @@ const CreateQuestion = () => {
           title: yup
             .string()
             .min(10, "Muy Corto")
-            .max(100, "Muy largo")
+            .max(200, "Muy largo")
             .required("Falta el Titulo"),
           content: yup
             .array()
@@ -74,7 +74,7 @@ const CreateQuestion = () => {
               <TextField name="title" placeholder="Tu Pregunta" />
               <ErrorMessage name="title" />
               <Text
-                text="Describe tu pregunta y/o incluye material para que asea mas facil de responder"
+                text="Describe tu pregunta y/o incluye material para que sea mas facil de responder"
                 fontSize="18px"
                 margin="10px 5px"
               />
