@@ -10,10 +10,11 @@ import FlexColumn from "../../../../components/common/FlexColumn";
 import FlexRow from "../../../../components/common/FlexRow";
 import Text from "../../../../components/common/Text";
 import Button from "../../../../components/common/Button";
-import { pickAnswer } from "../../../../data/queryQuestions";
+import { pickAnswer, deleteAnswer } from "../../../../data/queryQuestions";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { ReactComponent as CorrectIcon } from "../../../../assets/icons/correct.svg";
 import Title from "../../../../components/common/Title";
+import { ReactComponent as TrashIcon } from "../../../../assets/icons/trash.svg";
 
 function AnswersSection({ question }) {
   const {
@@ -31,21 +32,38 @@ function AnswersSection({ question }) {
   const { currentUser } = useContext(AuthContext);
 
   const shouldShowButton = (answer) => {
-    if (currentUser.id !== question.attributes.createdBy.id) return false;
-    if (currentUser.id === answer.attributes.createdBy.id) return false;
+    if (currentUser?.id !== question.attributes.createdBy.id) return false;
+    if (currentUser?.id === answer.attributes.createdBy.id) return false;
     if (question.attributes.answer) return false;
 
     return true;
+  };
+
+  const selectAnswer = (data) => {
+    pickAnswer(data);
+    reloadData();
+  };
+
+  const unselectAnswer = () => {
+    deleteAnswer({ question });
+    reloadData();
   };
 
   return (
     <FlexColumn>
       {question.attributes.answer ? (
         <FlexColumn alignItems="center">
-          <FlexRow>
-            <Title text="Respuesta Selecionada"></Title>
+          <FlexRow alignItems="center">
             <CorrectIcon width="19px" height="18px" />
+            <Title text="Respuesta Selecionada"></Title>
           </FlexRow>
+          {currentUser?.id === question.attributes.createdBy.id && (
+            <FlexRow alignItems="center" onClick={unselectAnswer}>
+              <TrashIcon width="12px" height="12px" fill="#dc7e7e" />
+              <Text text="Quitar Como Respuesta Selecionada" color="#dc7e7e" />
+            </FlexRow>
+          )}
+
           <Comment
             style={{ width: "-webkit-fill-available" }}
             margin="15px 0px "
@@ -53,13 +71,14 @@ function AnswersSection({ question }) {
             user={question.attributes.answer.attributes.createdBy}
             text={question.attributes.answer.attributes.text}
           />
-          <Text text="Quitar Respuesta" />
           <Title text="Otras Respuestas"></Title>
         </FlexColumn>
       ) : (
         <>
           <Title text="Respuestas"></Title>
-          <AddAnswerForm reloadData={reloadData} question={question} />
+          {currentUser && (
+            <AddAnswerForm reloadData={reloadData} question={question} />
+          )}
         </>
       )}
       {!isLoading && (
@@ -80,7 +99,7 @@ function AnswersSection({ question }) {
                   {shouldShowButton(item) && (
                     <Button
                       typeStyle="secondary"
-                      onClick={() => pickAnswer({ answer: item, question })}
+                      onClick={() => selectAnswer({ answer: item, question })}
                     >
                       Marcar Como Respuesta
                     </Button>

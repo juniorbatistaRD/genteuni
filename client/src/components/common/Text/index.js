@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.css";
 
-function Text({ text, fontSize, margin, padding, className, ...props }) {
+function Text({ text, fontSize, margin, padding, className, color, ...props }) {
   const classNames = [className, styles.text].join(" ");
 
   return (
@@ -11,6 +11,7 @@ function Text({ text, fontSize, margin, padding, className, ...props }) {
         fontSize,
         margin,
         padding,
+        color,
       }}
       {...props}
     >
@@ -22,6 +23,7 @@ function Text({ text, fontSize, margin, padding, className, ...props }) {
 Text.defaultProps = {
   className: " ",
   text: " ",
+  color: "#696969",
   fontSize: "16px",
 };
 

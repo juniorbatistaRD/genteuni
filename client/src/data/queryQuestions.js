@@ -30,12 +30,15 @@ export const getQuestionById = async (id) => {
 };
 
 export const pickAnswer = async ({ answer, question }) => {
-  const getQuestion = new Parse.Query(Question);
+  question.set("answer", answer);
 
-  const fetchedQuestion = await getQuestion.get(question.id);
-  fetchedQuestion.set("answer", answer);
+  await question.save();
+};
 
-  await fetchedQuestion.save();
+export const deleteAnswer = async ({ question }) => {
+  question.set("answer", null);
+
+  await question.save();
 };
 
 export default query;
