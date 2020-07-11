@@ -41,4 +41,30 @@ export const deleteAnswer = async ({ question }) => {
   await question.save();
 };
 
+export const getQuestionsWithPagination = async ({
+  startFrom,
+  queryData,
+  perPage,
+  user,
+}) => {
+  const query = new Parse.Query(Question);
+  const queryArea = new Parse.Query("Area");
+
+  if (queryData) {
+    const areaResult = await queryArea.get(queryData);
+    query.equalTo("area", areaResult);
+  }
+
+  // query.equalTo("school", queryData);
+  query.skip(startFrom);
+  query.include("area");
+  query.include("createdBy");
+  query.descending("createdAt");
+  query.limit(perPage);
+  query.withCount();
+  const result = await query.find();
+
+  return result;
+};
+
 export default query;

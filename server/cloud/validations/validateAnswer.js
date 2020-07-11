@@ -14,10 +14,10 @@ Parse.Cloud.beforeSave("Answer", async (req) => {
 
   answer.setACL(acl);
 
-  //for notification
-  // req.context = {
-  //   triggeredBy: req.user,
-  //   post: answer.get("post"),
-  //   text: answer.get("text"),
-  // };
+  // for notification
+  req.context = {
+    triggeredBy: req.user,
+    question: answer.get("question"),
+    text: answer.get("text"),
+  };
 });

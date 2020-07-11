@@ -8,12 +8,16 @@ import Avatar from "../common/Avatar";
 import Moment from "react-moment";
 import extractTextFromPost from "../../helpers/extractTextFromPost";
 import { ReactComponent as CorrectIcon } from "../../assets/icons/correct.svg";
+import { useNavigate } from "react-router-dom";
 
 function QuestionHeader({ question, listItem }) {
+  const navigate = useNavigate();
   return (
     <FlexColumn
       className={styles.header}
-      // onClick={() => navigate("/app/post/" + post.id)}
+      onClick={() => {
+        if (listItem) navigate("/app/question/" + question.id);
+      }}
     >
       <h1 className={styles.title}>{question.attributes.title}</h1>
       {question.attributes.answer && (
@@ -35,7 +39,7 @@ function QuestionHeader({ question, listItem }) {
           }
           className={styles.avatar}
           width="25px"
-          image={question.attributes.createdBy.attributes.profilePicture?.url()}
+          image={question.attributes.createdBy?.attributes.profilePicture?.url()}
         />
         <Text
           className={styles.usernameText}
