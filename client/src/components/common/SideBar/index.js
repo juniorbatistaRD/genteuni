@@ -5,7 +5,7 @@ import Avatar from "../Avatar";
 import arrowIcon from "../../../assets/icons/arrow.svg";
 import homeIcon from "../../../assets/icons/home-run.svg";
 import chatIcon from "../../../assets/icons/comment.svg";
-import communityIcon from "../../../assets/icons/discussion.svg";
+import rocketIcon from "../../../assets/icons/start-button.svg";
 import schoolIcon from "../../../assets/icons/school.svg";
 import questionIcon from "../../../assets/icons/question.svg";
 import loveIcon from "../../../assets/icons/love.svg";
@@ -60,20 +60,17 @@ function SideBar({ setMenuOpen, className, ...props }) {
           }}
         >
           <img alt="option" className={styles["menu-icon"]} src={homeIcon} />
-          <span>Inicio</span>
+          <span>Feed</span>
+        </li>
+        <li>
+          <img alt="option" className={styles["menu-icon"]} src={rocketIcon} />
+          <span>Descubre</span>
         </li>
         <li>
           <img alt="option" className={styles["menu-icon"]} src={chatIcon} />
-          <span>Chat</span>
+          <span>Chat Global</span>
         </li>
-        <li>
-          <img
-            alt="option"
-            className={styles["menu-icon"]}
-            src={communityIcon}
-          />
-          <span>Profesores</span>
-        </li>
+
         <li
           onClick={() => {
             goTo("/app/schools");

@@ -19,6 +19,8 @@ import ShowTeacher from "./pages/TeachersPage/ShowTeacher";
 import CreateQuestion from "./pages/QuestionPage/CreateQuestion";
 import QuestionPage from "./pages/QuestionPage";
 import ShowQuestion from "./pages/QuestionPage/ShowQuestion";
+import CreateJob from "./pages/JobPage/CreateJob";
+import ShowJob from "./pages/JobPage/ShowJob";
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
             <Route path="/question" element={<QuestionPage />} />
             <Route path="/question/:id" element={<ShowQuestion />} />
             <Route path="/question/create/" element={<CreateQuestion />} />
+            <Route path="/job/:id" element={<ShowJob />} />
+            <Route path="/job/create/" element={<CreateJob />} />
           </Route>
           <Route path="/chat/:id" element={<ConversationPage />} />
         </Routes>

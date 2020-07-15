@@ -19,8 +19,10 @@ import styles from "./index.module.css";
 import FlexRow from "../../../components/common/FlexRow";
 import GoBackButton from "../../../components/GoBackButton";
 import Title from "../../../components/common/Title";
+import SelectCountry from "../../SettingPage/SelectCountry";
+import { saveJob } from "../../../data/queryJobs";
 
-const CreateQuestion = () => {
+const CreateJob = () => {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
 
@@ -28,14 +30,14 @@ const CreateQuestion = () => {
     <FlexColumn>
       <FlexRow alignItems="center">
         <GoBackButton />
-        <Title text="Crea una Pregunta" />
+        <Title text="Publicar Un Trabajo" />
       </FlexRow>
       <Formik
         initialValues={{
           title: "",
           content: [],
           area: "",
-          postOnSchool: currentUser.attributes.school ? true : false,
+          country: "",
         }}
         validationSchema={yup.object({
           title: yup
@@ -51,8 +53,8 @@ const CreateQuestion = () => {
             )
             .max(200, "Demasiados bloques, intenta eliminado algunos")
             .nullable(),
-          postOnSchool: yup.boolean(),
           area: yup.mixed().required("Elige el area"),
+          country: yup.mixed().required("Elige el pais"),
         })}
         onSubmit={async (values) => {
           try {
@@ -60,8 +62,8 @@ const CreateQuestion = () => {
               ...values,
               content: await values.content.save(),
             };
-            const result = await saveQuestion(params);
-            navigate(`/app/question/${result.id}`);
+            const result = await saveJob(params);
+            navigate(`/app/job/${result.id}`);
           } catch (error) {
             showAlert({
               type: "error",
@@ -74,14 +76,14 @@ const CreateQuestion = () => {
           <Form>
             <FlexColumn>
               <Text
-                text="¿Cual es tu Pregunta?"
+                text="Titulo del Trabajo"
                 fontSize="18px"
                 margin="10px 5px"
               />
-              <TextField name="title" placeholder="Tu Pregunta" />
+              <TextField name="title" placeholder="Titulo del Trabajo" />
               <ErrorMessage name="title" />
               <Text
-                text="Describe tu pregunta y/o incluye material para que sea mas facil de responder"
+                text="Describe tu el trabajo y/o incluye material. "
                 fontSize="18px"
                 margin="10px 5px"
               />
@@ -92,14 +94,13 @@ const CreateQuestion = () => {
                 />
               </FlexColumn>
               <ErrorMessage name="content" />
+              <Text text="Area:" fontSize="18px" margin="10px 5px" />
               <SelectArea name="area" placeholder="Seleciona el area" />
               <ErrorMessage name="area" />
+              <Text text="Pais:" fontSize="18px" margin="10px 5px" />
+              <SelectCountry name="country" placeholder="Selecione el pais" />
+              <ErrorMessage name="country" />
 
-              {currentUser.attributes.school && (
-                <CheckBox name="postOnSchool">
-                  Publicar en mural de tu Escuela
-                </CheckBox>
-              )}
               <Button type="submit">Publicar</Button>
             </FlexColumn>
           </Form>
@@ -109,4 +110,4 @@ const CreateQuestion = () => {
   );
 };
 
-export default CreateQuestion;
+export default CreateJob;
