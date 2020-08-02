@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import styles from "./AnswersSection.module.css";
 import AddAnswerForm from "./AddAnswerForm";
 import useInfiniteScrolling from "../../../../hooks/useInfinteScrolling";
 import { getAnswersWithPagination } from "../../../../data/queryAnswers";

@@ -17,8 +17,8 @@ import MenuProfile from "./components/MenuProfile";
 import PostSection from "./PostSection";
 import CommentSection from "./CommentSection";
 import GiftSection from "./GiftSection";
-import MessageButton from "./components/MessageButton";
 import TabsMenu from "../../components/common/TabsMenu";
+import MessageButton from "../../components/MessageButton";
 
 function ProfilePage({ user }) {
   const { currentUser } = useContext(AuthContext);

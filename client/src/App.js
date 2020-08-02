@@ -21,6 +21,7 @@ import QuestionPage from "./pages/QuestionPage";
 import ShowQuestion from "./pages/QuestionPage/ShowQuestion";
 import CreateJob from "./pages/JobPage/CreateJob";
 import ShowJob from "./pages/JobPage/ShowJob";
+import JobPage from "./pages/JobPage";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
             <Route path="/question" element={<QuestionPage />} />
             <Route path="/question/:id" element={<ShowQuestion />} />
             <Route path="/question/create/" element={<CreateQuestion />} />
+            <Route path="/job" element={<JobPage />} />
             <Route path="/job/:id" element={<ShowJob />} />
             <Route path="/job/create/" element={<CreateJob />} />
           </Route>

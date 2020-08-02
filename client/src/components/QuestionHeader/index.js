@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./QuestionHeader.module.css";
 import FlexColumn from "../common/FlexColumn";
 import FlexRow from "../common/FlexRow";
-import Title from "../common/Title";
 import Text from "../common/Text";
 import Avatar from "../common/Avatar";
 import Moment from "react-moment";
@@ -12,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 function QuestionHeader({ question, listItem }) {
   const navigate = useNavigate();
+
   return (
     <FlexColumn
       className={styles.header}

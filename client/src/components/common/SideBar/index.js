@@ -95,7 +95,11 @@ function SideBar({ setMenuOpen, className, ...props }) {
           <img alt="option" className={styles["menu-icon"]} src={loveIcon} />
           <span>UniCrush</span>
         </li>
-        <li>
+        <li
+          onClick={() => {
+            goTo("/app/job/");
+          }}
+        >
           <img alt="option" className={styles["menu-icon"]} src={workIcon} />
           <span>Trabajos</span>
         </li>

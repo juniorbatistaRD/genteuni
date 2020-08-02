@@ -55,7 +55,11 @@ export const getQuestionsWithPagination = async ({
     query.equalTo("area", areaResult);
   }
 
-  // query.equalTo("school", queryData);
+  //if with school
+  if (user) {
+    query.equalTo("relatedToSchool", user);
+  }
+
   query.skip(startFrom);
   query.include("area");
   query.include("createdBy");

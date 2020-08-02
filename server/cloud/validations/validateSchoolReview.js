@@ -18,7 +18,7 @@ Parse.Cloud.beforeSave("SchoolReview", async (req, res) => {
   review.setACL(acl);
 
   if (result > 0) {
-    throw "Ya sigues haz publicado un review para esta escuela";
+    throw "Ya publicaste un review para esta escuela";
   }
 
   if (

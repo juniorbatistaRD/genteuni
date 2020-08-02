@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import queryCountries from "../../../data/queryCountries";
-import SelectCountry from "../SelectCountry";
 import {
   TextField,
   TextArea,
   SelectField,
-  ErrorMessage
+  ErrorMessage,
+  SelectCountry,
 } from "../../../components/formikFields";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -25,7 +25,7 @@ function ProfileForm() {
           username: currentUser.attributes.username,
           bio: currentUser.attributes.bio,
           country: currentUser.attributes.country?.id,
-          gender: currentUser.attributes.gender
+          gender: currentUser.attributes.gender,
         }}
         validationSchema={Yup.object({
           username: Yup.string()
@@ -39,9 +39,9 @@ function ProfileForm() {
 
           country: Yup.string(),
 
-          gender: Yup.string()
+          gender: Yup.string(),
         })}
-        onSubmit={async values => {
+        onSubmit={async (values) => {
           try {
             let country;
             if (values.country) {
@@ -54,7 +54,7 @@ function ProfileForm() {
             await currentUser.save().then(() => {
               showAlert({
                 type: "success",
-                title: "Perfil Actualizado!"
+                title: "Perfil Actualizado!",
               });
             });
           } catch (error) {
@@ -68,12 +68,12 @@ function ProfileForm() {
             showAlert({
               type: "error",
               title: "Opps",
-              text: message
+              text: message,
             });
           }
         }}
       >
-        {props => (
+        {(props) => (
           <Form className={styles.form}>
             <Title typeStyle="secondary" text="Nombre de Usuario" />
             <TextField placeholder="Username" name="username" />
@@ -89,6 +89,7 @@ function ProfileForm() {
 
             <Title typeStyle="secondary" text="Pais" />
             <SelectCountry name="country" placeholder="Elige tu pais" />
+            {/* <SelectCountry name="country" placeholder="Elige tu pais" /> */}
             <ErrorMessage name="country" />
 
             <Title typeStyle="secondary" text="Genero" />
@@ -96,7 +97,7 @@ function ProfileForm() {
               placeholder="Elige tu genero"
               options={[
                 { value: "female", name: "Mujer" },
-                { value: "male", name: "Hombre" }
+                { value: "male", name: "Hombre" },
               ]}
               name="gender"
             />

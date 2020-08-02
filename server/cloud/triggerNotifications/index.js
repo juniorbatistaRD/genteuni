@@ -6,3 +6,4 @@ require("./notifyGift");
 require("./notifyRecieveAnswer");
 require("./sendPushNotification");
 require("./deleteTokenAfterLogout");
+require("./notifyJobApplication");

@@ -1,18 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Formik, Form } from "formik";
 import { TextArea, ErrorMessage } from "../../../../components/formikFields";
-// import { saveComment } from "../../../data/queryPostComment";
-import { AuthContext } from "../../../../contexts/AuthContext";
 import Button from "../../../../components/common/Button";
 import styles from "./AddAnswerForm.module.css";
 import * as Yup from "yup";
 import FlexRow from "../../../../components/common/FlexRow";
 import FlexColumn from "../../../../components/common/FlexColumn";
-import { saveQuestion } from "../../../../data/queryQuestions";
 import { saveAnswer } from "../../../../data/queryAnswers";
 
 const AddAnswerForm = ({ question, reloadData }) => {
-  const { currentUser } = useContext(AuthContext);
 
   return (
     <div>

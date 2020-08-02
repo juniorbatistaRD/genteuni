@@ -1,7 +1,6 @@
 import React from "react";
 import Avatar from "../common/Avatar";
 import styles from "./index.module.css";
-import Text from "../common/Text";
 import Moment from "react-moment";
 import "moment/locale/es";
 import Title from "../common/Title";

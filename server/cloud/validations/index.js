@@ -15,3 +15,4 @@ require("./validateTeacher");
 require("./validateQuestion");
 require("./validateAnswer");
 require("./validateJob");
+require("./validateJobApplication");

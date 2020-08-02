@@ -14,6 +14,7 @@ import { ReactComponent as ChainIcon } from "../../assets/icons/chain.svg";
 import ReviewsSection from "./ReviewsSection";
 import MemebersSection from "./MembersSection";
 import TeachersSection from "./TeachersSection";
+import QuestionsSection from "./QuestionsSection";
 
 const SchoolPage = () => {
   const { id } = useParams();
@@ -99,6 +100,11 @@ const SchoolPage = () => {
             <Route
               path="teachers"
               element={<TeachersSection school={school} />}
+            />
+            
+            <Route
+              path="questions"
+              element={<QuestionsSection school={school} />}
             />
           </Routes>
         </FlexColumn>

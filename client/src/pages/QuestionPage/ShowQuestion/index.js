@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import FlexColumn from "../../../components/common/FlexColumn";
 import QuestionHeader from "../../../components/QuestionHeader";
 import RenderHTML from "../../../components/RenderHTML";
-import Title from "../../../components/common/Title";
 import AnswersSection from "./AnswersSection";
 
 function ShowQuestion() {
@@ -22,7 +21,7 @@ function ShowQuestion() {
     };
 
     getData();
-  }, []);
+  }, [id]);
 
   return (
     <FlexColumn margin="10px">
@@ -30,7 +29,7 @@ function ShowQuestion() {
         <Spinner />
       ) : (
         <FlexColumn>
-          <QuestionHeader item={question} listItem={false} />
+          <QuestionHeader question={question} listItem={false} />
           <FlexColumn className={styles.content}>
             <article>
               <RenderHTML json={question.attributes} />

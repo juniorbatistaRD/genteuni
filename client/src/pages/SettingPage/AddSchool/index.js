@@ -6,12 +6,12 @@ import {
   ErrorMessage,
   RadioField,
   CheckBox,
+  SelectCountry,
 } from "../../../components/formikFields";
 import Title from "../../../components/common/Title";
 import styles from "./index.module.css";
 import * as yup from "yup";
 import Button from "../../../components/common/Button";
-import SelectCountry from "../SelectCountry";
 import { saveSchool } from "../../../data/querySchools";
 import showAlert from "../../../helpers/showAlert/showAlert";
 import { AuthContext } from "../../../contexts/AuthContext";

@@ -1,17 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Formik, Form } from "formik";
 import {
   TextField,
-  CheckBox,
   SelectArea,
   ErrorMessage,
+  SelectCountry,
 } from "../../../components/formikFields";
 import RichTextEditor from "../../../components/formikFields/RichTextEditor";
 import * as yup from "yup";
 import showAlert from "../../../helpers/showAlert/showAlert";
 import { useNavigate } from "react-router-dom";
-import { saveQuestion } from "../../../data/queryQuestions";
-import { AuthContext } from "../../../contexts/AuthContext";
 import Button from "../../../components/common/Button";
 import FlexColumn from "../../../components/common/FlexColumn";
 import Text from "../../../components/common/Text";
@@ -19,12 +17,10 @@ import styles from "./index.module.css";
 import FlexRow from "../../../components/common/FlexRow";
 import GoBackButton from "../../../components/GoBackButton";
 import Title from "../../../components/common/Title";
-import SelectCountry from "../../SettingPage/SelectCountry";
 import { saveJob } from "../../../data/queryJobs";
 
 const CreateJob = () => {
   const navigate = useNavigate();
-  const { currentUser } = useContext(AuthContext);
 
   return (
     <FlexColumn>

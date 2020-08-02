@@ -59,6 +59,9 @@ const Notification = ({ notification }) => {
       case "QUESTION_ANSWER":
         text = `${notification.attributes.triggeredBy.attributes.username} respondio tu pregunta   `;
         return <Comment notification={notification} content={text} />;
+      case "JOB_APPLICATION_RECEIVED":
+        text = `${notification.attributes.triggeredBy.attributes.username} aplico para un trabajo que publicaste  `;
+        return <Comment notification={notification} content={text} />;
 
       default:
         return <DefaultNotification notification={notification} />;

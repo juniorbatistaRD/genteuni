@@ -1,0 +1,35 @@
+.container {
+  background: #fff;
+  border-radius: 7px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.date {
+  color: grey;
+  margin-right: 10px;
+}
+
+.header {
+  /* cursor: pointer; */
+  padding: 15px;
+  background: white;
+  border: 1px solid #b9b9b9;
+  margin-bottom: 20px;
+  box-shadow: -5px 8px 0px 0px #c4b793;
+}
+
+.avatar {
+  margin-right: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.usernameText {
+  cursor: pointer;
+}
+
+.title {
+  font-size: 24px;
+  color: #8b8269;
+  font-weight: normal;
+}
