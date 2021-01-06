@@ -15,6 +15,7 @@ import ReviewsSection from "./ReviewsSection";
 import MemebersSection from "./MembersSection";
 import TeachersSection from "./TeachersSection";
 import QuestionsSection from "./QuestionsSection";
+import CrushesSection from "./CrushesSection";
 
 const SchoolPage = () => {
   const { id } = useParams();
@@ -101,10 +102,14 @@ const SchoolPage = () => {
               path="teachers"
               element={<TeachersSection school={school} />}
             />
-            
+
             <Route
               path="questions"
               element={<QuestionsSection school={school} />}
+            />
+            <Route
+              path="crushes"
+              element={<CrushesSection school={school} />}
             />
           </Routes>
         </FlexColumn>

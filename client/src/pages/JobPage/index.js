@@ -50,10 +50,18 @@ function JobPage() {
             }}
           >
             <FlexRow alignItems="center" margin="10px 10px">
-              <Text text="Area:" />
-              <SelectArea name="area" placeholder="Todos" />
-              <Text text="Pais:" />
-              <SelectCountry name="country" placeholder="Todos" />
+              <p>Area:</p>
+              <SelectArea
+                name="area"
+                placeholder="Todos"
+                styles={{ width: "100%" }}
+              />
+              <p>Pais:</p>
+              <SelectCountry
+                name="country"
+                placeholder="Todos"
+                styles={{ width: "100%" }}
+              />
             </FlexRow>
           </Form>
         </Formik>

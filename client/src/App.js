@@ -22,6 +22,7 @@ import ShowQuestion from "./pages/QuestionPage/ShowQuestion";
 import CreateJob from "./pages/JobPage/CreateJob";
 import ShowJob from "./pages/JobPage/ShowJob";
 import JobPage from "./pages/JobPage";
+import CrushPage from "./pages/CrushPage";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
             <Route path="/job" element={<JobPage />} />
             <Route path="/job/:id" element={<ShowJob />} />
             <Route path="/job/create/" element={<CreateJob />} />
+            <Route path="/unicrush/" element={<CrushPage />} />
           </Route>
           <Route path="/chat/:id" element={<ConversationPage />} />
         </Routes>

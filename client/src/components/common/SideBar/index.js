@@ -91,7 +91,11 @@ function SideBar({ setMenuOpen, className, ...props }) {
           />
           <span>Pregunta</span>
         </li>
-        <li>
+        <li
+          onClick={() => {
+            goTo("/app/unicrush/");
+          }}
+        >
           <img alt="option" className={styles["menu-icon"]} src={loveIcon} />
           <span>UniCrush</span>
         </li>

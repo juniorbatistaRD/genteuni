@@ -15,4 +15,5 @@ require("./validateTeacher");
 require("./validateQuestion");
 require("./validateAnswer");
 require("./validateJob");
+require("./validateCrush");
 require("./validateJobApplication");
